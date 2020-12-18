@@ -1,41 +1,28 @@
 package core;
 
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-/** First screen of the application. Displayed after the application is created. */
-public class FirstScreen implements Screen {
-	@Override
-	public void show() {
-		// Prepare your screen here.
-	}
+/**
+ * First screen of the application. Displayed after the application is created.
+ */
+public class FirstScreen extends ScreenAdapter {
 
-	@Override
-	public void render(float delta) {
-		// Draw your screen here. "delta" is the time since last render in seconds.
-	}
+    private SpriteBatch spriteBatch;
+    private Texture test;
 
-	@Override
-	public void resize(int width, int height) {
-		// Resize your screen here. The parameters represent the new window size.
-	}
+    @Override
+    public void show() {
+        spriteBatch = new SpriteBatch();
+        test = new Texture(Gdx.files.internal("mclogo.png"));
+    }
 
-	@Override
-	public void pause() {
-		// Invoked when your application is paused.
-	}
-
-	@Override
-	public void resume() {
-		// Invoked when your application is resumed after pause.
-	}
-
-	@Override
-	public void hide() {
-		// This method is called when another screen replaces this one.
-	}
-
-	@Override
-	public void dispose() {
-		// Destroy screen's assets here.
-	}
+    @Override
+    public void render(float delta) {
+        spriteBatch.begin();
+        spriteBatch.draw(test, 0, 0);
+        spriteBatch.end();
+    }
 }
