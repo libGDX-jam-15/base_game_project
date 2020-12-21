@@ -3,9 +3,9 @@ package core.Screens.game.stuff;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import static core.Constants.CELL_SIZE;
-import static core.Constants.GRID_COLUMNS;
-import static core.Constants.GRID_ROWS;
+import static core.config.Constants.CELL_SIZE;
+import static core.config.Constants.GRID_COLUMNS;
+import static core.config.Constants.GRID_ROWS;
 
 public class Grid {
 
