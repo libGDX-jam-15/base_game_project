@@ -48,9 +48,9 @@ public class MenuScreen implements Screen {
         Table table = new Table();
         table.setFillParent(true);
 
-        Label label = new Label("SLEEPER JEEPER", skin, "pixelFont");
-        label.setEllipsis("...");
-        table.add(label).spaceTop(5.0f).spaceBottom(10.0f);
+        Label nameLabel = new Label("SLEEPER JEEPER", skin, "pixelFont");
+        nameLabel.setEllipsis("...");
+        table.add(nameLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
         table.row();
         TextButton playButton = new TextButton("PLAY!", skin, "pixelFont");
@@ -63,7 +63,10 @@ public class MenuScreen implements Screen {
         table.row();
         TextButton highScoreButton = new TextButton("HighScores", skin, "pixelFont");
         table.add(highScoreButton).spaceBottom(10.0f).fillX();
-        stage.addActor(table);
+
+        table.row();
+        Label versionLabel = new Label(GameConfig.GAME_VERSION, skin);
+        table.add(versionLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
 
 
@@ -75,6 +78,7 @@ public class MenuScreen implements Screen {
             }
         });
 
+        stage.addActor(table);
     }
 
     @Override
