@@ -1,7 +1,7 @@
 package core.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,7 +18,7 @@ import core.config.GameConfig;
 /**
  * First screen of the application. Displayed after the application is created.
  */
-public class MenuScreen implements Screen {
+public class MenuScreen extends ScreenAdapter {
     private GameMain game;
     private OrthographicCamera cam;
     private FitViewport viewport;
@@ -38,11 +38,11 @@ public class MenuScreen implements Screen {
 
     stage = new Stage(viewport, game.batch);
 
-    game.assetManager.load("Skins/freezing-ui.json", Skin.class);
-    game.assetManager.finishLoading();
+    game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
+    game.getAssetManager().finishLoading();
 
 
-        skin = game.assetManager.get("Skins/freezing-ui.json");
+        skin = game.getAssetManager().get("Skins/freezing-ui.json");
         Gdx.input.setInputProcessor(stage);
 
         Table table = new Table();
