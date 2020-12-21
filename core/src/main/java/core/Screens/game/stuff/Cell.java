@@ -3,7 +3,7 @@ package core.Screens.game.stuff;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import static core.Constants.CELL_SIZE;
+import static core.config.Constants.CELL_SIZE;
 
 public class Cell {
 

@@ -1,4 +1,4 @@
-package core;
+package core.config;
 
 public class Constants {
 
