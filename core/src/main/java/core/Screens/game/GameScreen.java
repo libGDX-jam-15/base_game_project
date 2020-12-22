@@ -1,6 +1,7 @@
 package core.Screens.game;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
 
 import core.Screens.game.stuff.GameStuff;
 import core.util.GdxUtils;
@@ -29,7 +30,7 @@ public class GameScreen extends ScreenAdapter {
         // Update game state according to delta first
         // todo: logic.update(delta);
         // Then render the frame
-        GdxUtils.clearScreen();
+        GdxUtils.clearScreen(Color.CHARTREUSE);
         renderer.render();
     }
 }

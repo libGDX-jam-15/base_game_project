@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
 import core.GameMain;
 import core.Screens.game.GameScreen;
 import core.config.GameConfig;
@@ -19,7 +20,7 @@ import core.config.GameConfig;
  * First screen of the application. Displayed after the application is created.
  */
 public class MenuScreen extends ScreenAdapter {
-    private GameMain game;
+    private final GameMain game;
     private OrthographicCamera cam;
     private FitViewport viewport;
     private Stage stage;
@@ -32,14 +33,14 @@ public class MenuScreen extends ScreenAdapter {
     @Override
     public void show() {
 
-    cam = new OrthographicCamera();
-    viewport = new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT, cam);
-    cam.position.set(viewport.getWorldWidth()/2, viewport.getWorldHeight()/2, 0);
+        cam = new OrthographicCamera();
+        viewport = new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT, cam);
+        cam.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 
-    stage = new Stage(viewport, game.batch);
+        stage = new Stage(viewport, game.batch);
 
-    game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
-    game.getAssetManager().finishLoading();
+        game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
+        game.getAssetManager().finishLoading();
 
 
         skin = game.getAssetManager().get("Skins/freezing-ui.json");
@@ -68,9 +69,7 @@ public class MenuScreen extends ScreenAdapter {
         Label versionLabel = new Label(GameConfig.GAME_VERSION, skin);
         table.add(versionLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
-
-
-        //Add listeners to buttons
+        // Add listeners to buttons
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

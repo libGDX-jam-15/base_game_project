@@ -2,6 +2,7 @@ package core.Screens.game;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 // TODO: TEMPORARY CLASS FOR TESTING THE GRID DRAWING
@@ -11,7 +12,7 @@ public class GameAssets {
     // Sprites
     private Sprite testCell;
     // Fonts
-
+    private BitmapFont font;
     // Audio
 
     public GameAssets() {
@@ -36,6 +37,7 @@ public class GameAssets {
         testCell = new Sprite(assetManager.get("testCell.png", Texture.class));
     }
 
+    // Asset getters
     public Sprite getTestCell() {
         return testCell;
     }
