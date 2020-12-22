@@ -3,20 +3,22 @@ package core.config;
 
 public class GameConfig {
 
-    public static final float SCREEN_WIDTH = 800f; //pixels
-    public static final float SCREEN_HEIGHT = 480f; //pixels
+    private GameConfig() {
+    }
 
-    //Only used for HTML Display size
-    public static final int SCREEN_HTML_DISPLAY_WIDTH = (int)SCREEN_WIDTH; //pixels
-    public static final int SCREEN_HTML_DISPLAY_HEIGHT = (int)SCREEN_HEIGHT; //pixels
+    public static final int SCREEN_WIDTH = 800; // pixels
 
-    //Only used for Desktop Display size
-    public static final int SCREEN_DESKTOP_DISPLAY_WIDTH = (int)SCREEN_WIDTH ; //pixels
-    public static final int SCREEN_DESKTOP_DISPLAY_HEIGHT = (int)SCREEN_HEIGHT ; //pixels
+    public static final int SCREEN_HEIGHT = 480; // pixels
+    // Only used for HTML Display size
+    public static final int SCREEN_HTML_DISPLAY_WIDTH = SCREEN_WIDTH; // pixels
+
+    public static final int SCREEN_HTML_DISPLAY_HEIGHT = SCREEN_HEIGHT; // pixels
+    // Only used for Desktop Display size
+    public static final int SCREEN_DESKTOP_DISPLAY_WIDTH = SCREEN_WIDTH; // pixels
+
+    public static final int SCREEN_DESKTOP_DISPLAY_HEIGHT = SCREEN_HEIGHT; // pixels
 
     public static final String GAME_VERSION = "V.0.0.1";
 
-    public static final boolean debug = true;
-
-    private GameConfig(){}
+    public static final boolean DEBUG = true;
 }
