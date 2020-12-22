@@ -29,4 +29,8 @@ public class Grid {
             }
         }
     }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
 }
