@@ -17,6 +17,8 @@ public class GameRenderer {
     public void render() {
         spriteBatch.begin();
         stuff.getGrid().draw(spriteBatch);
+        stuff.getPlayer().draw(spriteBatch);
+        stuff.getMovementLogic().update();
         spriteBatch.end();
     }
 

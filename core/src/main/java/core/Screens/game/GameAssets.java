@@ -10,7 +10,7 @@ public class GameAssets {
 
     private final AssetManager assetManager;
     // Sprites
-    private Sprite testCell;
+    private Sprite testCell, testPlayer;
     // Fonts
     private BitmapFont font;
     // Audio
@@ -21,6 +21,7 @@ public class GameAssets {
 
     public void queueAssetLoading() {
         assetManager.load("testCell.png", Texture.class);
+        assetManager.load("testPlayer.png", Texture.class);
     }
 
     // TODO: This is temporary, not asynchronous and just to test the grid
@@ -35,10 +36,12 @@ public class GameAssets {
 
     public void initializeAssets() {
         testCell = new Sprite(assetManager.get("testCell.png", Texture.class));
+        testPlayer = new Sprite(assetManager.get("testPlayer.png", Texture.class));
     }
 
     // Asset getters
     public Sprite getTestCell() {
         return testCell;
     }
+    public Sprite getTestPlayer(){ return testPlayer; }
 }

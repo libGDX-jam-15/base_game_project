@@ -3,6 +3,7 @@ package core.Screens.game;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 
+import core.Screens.game.logic.MovementLogic;
 import core.Screens.game.stuff.GameStuff;
 import core.util.GdxUtils;
 
@@ -23,6 +24,11 @@ public class GameScreen extends ScreenAdapter {
         stuff.setAssets(assets);
 
         stuff.initializeStuff();
+
+        stuff.getGrid().getCells();
+        //stuff.getPlayer().setPosition( 1,1);
+
+
     }
 
     @Override
