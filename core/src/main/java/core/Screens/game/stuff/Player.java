@@ -40,6 +40,7 @@ public class Player {
         this.row = row;
         this.column = column;
         sprite.setPosition(grid.getCells()[row][column].getX(), grid.getCells()[row][column].getY());
+        //Todo get direction, and change movementState
     }
 
     public Rectangle getBounds() {
