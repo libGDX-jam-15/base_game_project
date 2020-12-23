@@ -35,17 +35,17 @@ public class MovementLogic {
 
     public void update(){
         stateTime += Gdx.graphics.getDeltaTime();
-        if (stateTime > 2 || Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+        if (stateTime > 2) {
+            if (moveState == MoveStates.Up){
                 this.row++;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            } else if (moveState == MoveStates.Down) {
                 this.row--;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            } else if (moveState == MoveStates.Right) {
                 this.column++;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            } else if (moveState == MoveStates.Left) {
                 this.column--;
                 stateTime = 0;
             }
