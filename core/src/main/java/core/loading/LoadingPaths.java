@@ -10,6 +10,8 @@ public class LoadingPaths {
 
         list.add(ImagesPaths.TEST_CELL);
         list.add(ImagesPaths.TEST_PLAYER);
+        list.add(ImagesPaths.PIXEL);
+        list.add(ImagesPaths.ARROW);
         return list;
     }
 

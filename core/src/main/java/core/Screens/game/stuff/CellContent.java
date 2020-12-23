@@ -6,11 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class CellContent {
 
     protected final Sprite sprite;
-    protected final Cell cell;
+    protected Cell cell;
 
     public CellContent(Sprite cellContentSprite, Cell cell) {
         sprite = new Sprite(cellContentSprite);
-        sprite.setPosition(cell.getX(), cell.getY());
         this.cell = cell;
     }
 
@@ -20,5 +19,10 @@ public abstract class CellContent {
 
     public Cell getCell() {
         return cell;
+    }
+
+    public void setCell(Cell cell) {
+        sprite.setPosition(cell.getX(),cell.getY());
+        this.cell = cell;
     }
 }

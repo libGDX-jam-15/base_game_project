@@ -22,6 +22,9 @@ public class Cell {
 
     public void draw(SpriteBatch spriteBatch) {
         sprite.draw(spriteBatch);
+        if (content != null) {
+            content.draw(spriteBatch);
+        }
     }
 
     public Vector2 getCenter() {
