@@ -1,5 +1,6 @@
 package core.Screens.game.logic;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 
 import core.Screens.game.stuff.Cell;
@@ -19,6 +20,11 @@ public class DragAndDropHandler {
         pivotY = y - power.getBounds().getY();
     }
 
+    public void dragOverCell(Cell cell) {
+        clearHighlightedCell();
+        cell.setColor(Color.CHARTREUSE);
+    }
+
     public void touchDragged(float x, float y) {
         if (draggedPower != null) {
             draggedPower.setPosition(x - pivotX, y - pivotY);
@@ -27,10 +33,17 @@ public class DragAndDropHandler {
 
     public void touchUp() {
         draggedPower = null;
+        clearHighlightedCell();
     }
 
     public void touchUpOnCell(Cell cell) {
+        clearHighlightedCell();
         if (draggedPower == null) {
+            return;
+        }
+        if (!cell.isEmpty()) {
+            // TODO: move power back to panel
+            draggedPower = null;
             return;
         }
         DelayedRemovalArray<Power> powers = stuff.getPowersPanel().getPowers();
@@ -40,6 +53,14 @@ public class DragAndDropHandler {
         draggedPower.setCell(cell);
         cell.setContent(draggedPower);
         draggedPower = null;
+    }
+
+    private void clearHighlightedCell() {
+        for (Cell[] cellRow : stuff.getGrid().getCells()) {
+            for (Cell c : cellRow) {
+                c.setColor(Color.WHITE);
+            }
+        }
     }
 
     public void setStuff(GameStuff stuff) {
