@@ -10,8 +10,10 @@ import static core.config.Constants.CELL_SIZE;
 public class Player {
     private final Sprite sprite;
     private int row, column;
-    public Player(Sprite playerSprite) {
+    private Grid grid;
+    public Player(Sprite playerSprite, Grid grid) {
         sprite = new Sprite(playerSprite);
+        this.grid = grid;
         sprite.setSize(CELL_SIZE, CELL_SIZE);
 
     }
@@ -37,7 +39,7 @@ public class Player {
     public void setPosition(int row, int column){
         this.row = row;
         this.column = column;
-        sprite.setPosition(row * CELL_SIZE, column * CELL_SIZE);
+        sprite.setPosition(grid.getCells()[row][column].getX(), grid.getCells()[row][column].getY());
     }
 
     public Rectangle getBounds() {
