@@ -3,21 +3,21 @@ package core.Screens.game;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 
-import core.Screens.game.logic.MovementLogic;
+import core.GameMain;
 import core.Screens.game.stuff.GameStuff;
 import core.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter {
 
+    private GameMain game;
     private final GameRenderer renderer;
 
-    public GameScreen() {
-        GameAssets assets = new GameAssets();
+    public GameScreen(GameMain game) {
+        this.game = game;
+        GameAssets assets = new GameAssets(game.getAssetManager());
         renderer = new GameRenderer();
         GameStuff stuff = new GameStuff();
 
-        assets.queueAssetLoading();
-        assets.finishLoadingAssets(); // TODO: not async for now
         assets.initializeAssets();
 
         renderer.setStuff(stuff);

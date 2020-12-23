@@ -5,8 +5,9 @@ public class ImagesPaths {
     //TODO update these
 
 
-    //Menu
-    public static final String MENU_BACKGROUND = "images/menu_background.png";
+    //Images
+    public static final String TEST_CELL = "testCell.png";
+    public static final String TEST_PLAYER = "testPlayer.png";
 
     //Skin
     public static final String UI_SKIN_ATLAS = "skins/default/uiskin.atlas";
