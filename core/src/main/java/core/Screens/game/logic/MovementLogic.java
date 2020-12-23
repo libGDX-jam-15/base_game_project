@@ -6,9 +6,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 import core.Screens.game.stuff.Cell;
+import core.Screens.game.stuff.CellContent;
 import core.Screens.game.stuff.Grid;
 import core.Screens.game.stuff.MoveStates;
 import core.Screens.game.stuff.Player;
+import core.Screens.game.stuff.powers.Arrow;
 import core.config.Constants;
 
 import static com.badlogic.gdx.math.MathUtils.clamp;
@@ -20,6 +22,7 @@ public class MovementLogic {
     private Player player;
     private float stateTime;
     private MoveStates moveState;
+    private CellContent cellContent;
 
     public MovementLogic(Player player, Grid gameStuffGrid, Cell startCell, MoveStates startState) {
         row = startCell.getRow();
@@ -33,16 +36,16 @@ public class MovementLogic {
     public void update(){
         stateTime += Gdx.graphics.getDeltaTime();
         if (stateTime > 2 || Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP) || moveState == MoveStates.Up){
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
                 this.row++;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) || moveState == MoveStates.Down) {
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
                 this.row--;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) || moveState == MoveStates.Right) {
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
                 this.column++;
                 stateTime = 0;
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) || moveState == MoveStates.Left){
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
                 this.column--;
                 stateTime = 0;
             }
@@ -51,6 +54,26 @@ public class MovementLogic {
         this.column = MathUtils.clamp(column, 0, Constants.GRID_COLUMNS - 1);
 
         player.setPosition(this.column, this.row);
+        cellContent = grid.getCells()[column][row].getContent();
+        if(cellContent instanceof Arrow){
+            switch(((Arrow) cellContent).getDirection()){
+                case UP: {
+                    moveState = MoveStates.Up;
+                    break;}
+                case DOWN: {
+                    moveState = MoveStates.Down;
+                    break;}
+                case RIGHT:{
+                    moveState = MoveStates.Right;
+                    break;}
+                case LEFT:{
+                    moveState = MoveStates.Left;
+                    break;
+                }
+            }
+
+
+        }
     }
 
 public void setGrid(Grid gameStuffGrid){
