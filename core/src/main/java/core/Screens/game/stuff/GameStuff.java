@@ -7,17 +7,22 @@ public class GameStuff {
 
     private GameAssets assets;
     // Stuff
+    private PowersPanel powersPanel;
     private Grid grid;
     private Player player;
     private MovementLogic movementLogic;
 
     public void initializeStuff() {
+        powersPanel = new PowersPanel(assets.getPixel());
         grid = new Grid(assets.getTestCell());
         player = new Player(assets.getTestPlayer(), grid);
         movementLogic = new MovementLogic(player, grid, grid.getCells()[1][1], MoveStates.Right);
     }
 
     // Stuff getters
+    public PowersPanel getPowersPanel() {
+        return powersPanel;
+    }
     public Grid getGrid() {
         return grid;
     }
