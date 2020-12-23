@@ -24,7 +24,9 @@ public class PowerSpawner {
 
     public void update(float delta) {
         if (time == 0f) {
-            spawnRandomPower();
+            if (stuff.getPowersPanel().getPowers().size < 4) {
+                spawnRandomPower();
+            }
             time = 3f;
         }
         time = Math.max(time - delta, 0f);

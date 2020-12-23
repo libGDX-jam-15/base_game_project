@@ -1,5 +1,6 @@
 package core.Screens.game.stuff;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -29,6 +30,10 @@ public class Cell {
 
     public Vector2 getCenter() {
         return new Vector2(sprite.getX() + sprite.getWidth() / 2f, sprite.getY() + sprite.getHeight() / 2f);
+    }
+
+    public void setColor(Color color) {
+        sprite.setColor(color);
     }
 
     public float getX() {

@@ -23,6 +23,15 @@ public class InputHandler {
     }
 
     public void touchDragged(float x, float y) {
+        outer:
+        for (Cell[] cellRow : stuff.getGrid().getCells()) {
+            for (Cell cell : cellRow) {
+                if (cell.getBounds().contains(x, y)) {
+                    logic.getDragAndDropHandler().dragOverCell(cell);
+                    break outer;
+                }
+            }
+        }
         logic.getDragAndDropHandler().touchDragged(x, y);
     }
 

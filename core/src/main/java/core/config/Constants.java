@@ -15,6 +15,6 @@ public class Constants {
     public static final int POWERS_PANEL_HEIGHT = GRID_HEIGHT;
     public static final int POWERS_PANEL_X = GRID_WIDTH;
     // Powers
-    public static final int POWER_SIZE = CELL_SIZE;
+    public static final int POWER_SIZE = POWERS_PANEL_WIDTH / 2;
     public static final int POWER_X_POSITION = (int) (POWERS_PANEL_X + POWERS_PANEL_WIDTH / 2f - POWER_SIZE / 2f);
 }
