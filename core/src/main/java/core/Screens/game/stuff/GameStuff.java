@@ -13,8 +13,8 @@ public class GameStuff {
 
     public void initializeStuff() {
         grid = new Grid(assets.getTestCell());
-        player = new Player(assets.getTestPlayer());
-        movementLogic = new MovementLogic(player, grid, grid.getCells()[1][1]);
+        player = new Player(assets.getTestPlayer(), grid);
+        movementLogic = new MovementLogic(player, grid, grid.getCells()[1][1], MoveStates.Right);
     }
 
     // Stuff getters
