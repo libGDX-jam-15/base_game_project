@@ -1,7 +1,7 @@
-package core.Screens.game.stuff;
+package core.game.stuff;
 
-import core.Screens.game.GameAssets;
-import core.Screens.game.logic.MovementLogic;
+import core.game.GameAssets;
+import core.game.logic.MovementLogic;
 
 public class GameStuff {
 

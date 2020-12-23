@@ -4,8 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import core.Screens.LoadingScreen;
-import core.Screens.MenuScreen;
+import core.screens.LoadingScreen;
+import core.screens.MenuScreen;
 import core.config.GameConfig;
 import core.loading.LoadingPaths;
 

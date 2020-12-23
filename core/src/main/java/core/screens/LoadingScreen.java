@@ -1,4 +1,4 @@
-package core.Screens;
+package core.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;

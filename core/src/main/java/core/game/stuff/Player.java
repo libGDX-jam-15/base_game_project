@@ -1,4 +1,4 @@
-package core.Screens.game.stuff;
+package core.game.stuff;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

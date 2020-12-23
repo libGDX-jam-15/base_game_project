@@ -1,13 +1,13 @@
-package core.Screens.game.logic;
+package core.game.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import core.Screens.game.stuff.Cell;
-import core.Screens.game.stuff.Grid;
-import core.Screens.game.stuff.Player;
+import core.game.stuff.Cell;
+import core.game.stuff.Grid;
+import core.game.stuff.Player;
 import core.config.Constants;
 
 import static com.badlogic.gdx.math.MathUtils.clamp;

@@ -1,8 +1,8 @@
-package core.Screens.game;
+package core.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import core.Screens.game.stuff.GameStuff;
+import core.game.stuff.GameStuff;
 
 public class GameRenderer {
 

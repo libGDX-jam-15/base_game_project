@@ -1,4 +1,4 @@
-package core.Screens;
+package core.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import core.GameMain;
-import core.Screens.game.GameScreen;
 import core.config.GameConfig;
 
 /**
