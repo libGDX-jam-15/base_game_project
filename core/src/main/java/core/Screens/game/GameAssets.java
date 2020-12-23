@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import core.loading.ImagesPaths;
 
 // TODO: TEMPORARY CLASS FOR TESTING THE GRID DRAWING
 public class GameAssets {
@@ -15,28 +16,14 @@ public class GameAssets {
     private BitmapFont font;
     // Audio
 
-    public GameAssets() {
-        assetManager = new AssetManager();
+    public GameAssets(AssetManager assetManager) {
+        this.assetManager = assetManager;
     }
 
-    public void queueAssetLoading() {
-        assetManager.load("testCell.png", Texture.class);
-        assetManager.load("testPlayer.png", Texture.class);
-    }
-
-    // TODO: This is temporary, not asynchronous and just to test the grid
-    public void finishLoadingAssets() {
-        assetManager.finishLoading();
-    }
-
-    // TODO: Use this to load asynchronously
-    public boolean loadAssets() {
-        return assetManager.update();
-    }
 
     public void initializeAssets() {
-        testCell = new Sprite(assetManager.get("testCell.png", Texture.class));
-        testPlayer = new Sprite(assetManager.get("testPlayer.png", Texture.class));
+        testCell = new Sprite(assetManager.get(ImagesPaths.TEST_CELL, Texture.class));
+        testPlayer = new Sprite(assetManager.get(ImagesPaths.TEST_PLAYER, Texture.class));
     }
 
     // Asset getters

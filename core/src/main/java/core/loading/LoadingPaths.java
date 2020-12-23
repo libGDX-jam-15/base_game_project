@@ -8,7 +8,8 @@ public class LoadingPaths {
     public List<String> getTexturePaths() {
         List<String> list = new ArrayList<>();
 
-//        list.add(ImagesPaths.MENU_BACKGROUND);
+        list.add(ImagesPaths.TEST_CELL);
+        list.add(ImagesPaths.TEST_PLAYER);
         return list;
     }
 
