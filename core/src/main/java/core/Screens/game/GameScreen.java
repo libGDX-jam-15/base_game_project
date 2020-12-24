@@ -46,7 +46,7 @@ public class GameScreen extends ScreenAdapter {
         // Update game state according to delta first
         logic.update(delta);
         // Then render the frame
-        GdxUtils.clearScreen(Color.NAVY);
+        GdxUtils.clearScreen();
         renderer.render();
     }
 }

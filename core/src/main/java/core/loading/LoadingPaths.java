@@ -8,16 +8,20 @@ public class LoadingPaths {
     public List<String> getTexturePaths() {
         List<String> list = new ArrayList<>();
 
-        list.add(ImagesPaths.TEST_CELL);
+        list.add(ImagesPaths.STARFIELD);
+        list.add(ImagesPaths.ROBOT_FRAME);
+        list.add(ImagesPaths.ROBOT);
+        list.add(ImagesPaths.CELL);
         list.add(ImagesPaths.TEST_PLAYER);
         list.add(ImagesPaths.PIXEL);
         list.add(ImagesPaths.ARROW);
+        list.add(ImagesPaths.DRAGON_LANTERN);
         return list;
     }
 
-    public List<String> getBitmapPaths() {
+    public List<String> getFontPaths() {
         List<String> list = new ArrayList<>();
-        //list.add(GameAssets.GAME_FONT);
+        list.add(FontsPaths.PIXEL_FONT);
         return list;
     }
 

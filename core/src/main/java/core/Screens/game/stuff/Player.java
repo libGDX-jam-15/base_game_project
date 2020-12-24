@@ -8,14 +8,13 @@ import com.badlogic.gdx.math.Vector2;
 import static core.config.Constants.CELL_SIZE;
 
 public class Player {
-    private final Sprite sprite;
-    private int row, column;
-    private Grid grid;
-    public Player(Sprite playerSprite, Grid grid) {
-        sprite = new Sprite(playerSprite);
-        this.grid = grid;
-        sprite.setSize(CELL_SIZE, CELL_SIZE);
 
+    private final Sprite sprite;
+    private Cell cell;
+
+    public Player(Sprite playerSprite) {
+        sprite = new Sprite(playerSprite);
+        sprite.setSize(CELL_SIZE, CELL_SIZE);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -34,25 +33,16 @@ public class Player {
         return sprite.getY();
     }
 
-
-
-    public void setPosition(int row, int column){
-        this.row = row;
-        this.column = column;
-        sprite.setPosition(grid.getCells()[row][column].getX(), grid.getCells()[row][column].getY());
-        //Todo get direction, and change movementState
+    public void setPosition(Cell cell) {
+        sprite.setPosition(cell.getX(), cell.getY());
+        this.cell = cell;
     }
 
     public Rectangle getBounds() {
         return sprite.getBoundingRectangle();
     }
 
-    public int getColumn() {
-        return column;
+    public Cell getCell() {
+        return cell;
     }
-
-    public int getRow() {
-        return row;
-    }
-
 }
