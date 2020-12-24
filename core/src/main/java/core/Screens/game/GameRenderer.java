@@ -16,10 +16,12 @@ public class GameRenderer {
 
     public void render() {
         spriteBatch.begin();
+        stuff.getBackground().draw(spriteBatch);
+        stuff.getRobotFrame().draw(spriteBatch);
         stuff.getGrid().draw(spriteBatch);
+        stuff.getHover().draw(spriteBatch);
         stuff.getPowersPanel().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
-        stuff.getMovementLogic().update();
         spriteBatch.end();
     }
 

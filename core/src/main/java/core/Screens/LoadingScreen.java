@@ -26,7 +26,7 @@ public class LoadingScreen extends ScreenAdapter {
     private Viewport viewport;
     private Camera camera;
     private float progress = 0;
-    private GameMain game;
+    private final GameMain game;
     protected final AssetManager assetManager;
     protected final LoadingPaths loadingPaths;
     protected ScreenAdapter firstScreen;
@@ -51,35 +51,35 @@ public class LoadingScreen extends ScreenAdapter {
         viewport = new FitViewport(game.getScreenWidth(), game.getScreenHeight(), camera);
         shapeRenderer = new ShapeRenderer();
 
-        //Textures
+        // Textures
         if (loadingPaths.getTexturePaths() != null)
             loadingPaths.getTexturePaths()
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, Texture.class);
                     });
 
-        //BitmapFont
-        if (loadingPaths.getBitmapPaths() != null)
-            loadingPaths.getBitmapPaths()
+        // BitmapFonts
+        if (loadingPaths.getFontPaths() != null)
+            loadingPaths.getFontPaths()
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, BitmapFont.class);
                     });
 
-        //TileMap
+        // TileMaps
         if (loadingPaths.getTileMapPaths() != null)
             loadingPaths.getTileMapPaths()
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, TiledMap.class);
                     });
 
-        //Music
+        // Musics
         if (loadingPaths.getMusicPaths() != null)
             loadingPaths.getMusicPaths()
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, Music.class);
                     });
 
-        //Sound
+        // Sounds
         if (loadingPaths.getSoundPaths() != null)
             loadingPaths.getSoundPaths()
                     .forEach(path -> {

@@ -20,7 +20,7 @@ public class PowersPanel {
         background = new Sprite(backgroundSprite);
         background.setSize(POWERS_PANEL_WIDTH, POWERS_PANEL_HEIGHT);
         background.setX(POWERS_PANEL_X);
-        background.setColor(Color.SKY);
+        background.setColor(Color.PURPLE.cpy().lerp(Color.CLEAR, 0.5f));
         powers = new DelayedRemovalArray<>();
     }
 

@@ -1,5 +1,6 @@
 package core.config;
 
+import static core.config.GameConfig.SCREEN_HEIGHT;
 import static core.config.GameConfig.SCREEN_WIDTH;
 
 public class Constants {
@@ -17,4 +18,21 @@ public class Constants {
     // Powers
     public static final int POWER_SIZE = POWERS_PANEL_WIDTH / 2;
     public static final int POWER_X_POSITION = (int) (POWERS_PANEL_X + POWERS_PANEL_WIDTH / 2f - POWER_SIZE / 2f);
+    // Robot frame
+    public static final int ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH = CELL_SIZE * 3;
+    public static final int ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT = (int) ((SCREEN_HEIGHT - GRID_HEIGHT) * 0.5f);
+    public static final int ROBOT_FRAME_BACKGROUND_WIDTH = GRID_WIDTH - ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH / 2;
+    public static final int ROBOT_FRAME_BACKGROUND_HEIGHT = (int) (ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT * 0.8f);
+    public static final int ROBOT_FRAME_BACKGROUND_X = ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH / 2;
+    public static final int ROBOT_FRAME_BACKGROUND_Y = GRID_HEIGHT + ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT / 2 - ROBOT_FRAME_BACKGROUND_HEIGHT / 2;
+    public static final int ROBOT_FRAME_ROBOT_WIDTH = ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH / 2;
+    public static final int ROBOT_FRAME_ROBOT_HEIGHT = ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT;
+    public static final int ROBOT_FRAME_MESSAGE_WIDTH = ROBOT_FRAME_BACKGROUND_WIDTH - ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH;
+    public static final String[] ROBOT_MESSAGES = {
+            "Wake up sir you are gonna die! please wake up!",
+            "WAKE UP OMG OMG OMG!!!",
+            "Earth to captain! Don't fall asleep!",
+            "Find a way to stay alert captain! You're gonna fall asleep!",
+            "If you don't wake up right now the ship is gonna crash!!",
+    };
 }
