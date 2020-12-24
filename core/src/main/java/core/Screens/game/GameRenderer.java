@@ -18,6 +18,7 @@ public class GameRenderer {
         spriteBatch.begin();
         stuff.getBackground().draw(spriteBatch);
         stuff.getRobotFrame().draw(spriteBatch);
+        stuff.getPilotFrame().draw(spriteBatch);
         stuff.getGrid().draw(spriteBatch);
         stuff.getHover().draw(spriteBatch);
         stuff.getPowersPanel().draw(spriteBatch);

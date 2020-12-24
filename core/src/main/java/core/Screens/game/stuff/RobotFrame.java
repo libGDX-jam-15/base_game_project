@@ -50,7 +50,7 @@ public class RobotFrame {
                 ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH,
                 ROBOT_FRAME_BACKGROUND_Y + ROBOT_FRAME_BACKGROUND_HEIGHT,
                 ROBOT_FRAME_MESSAGE_WIDTH,
-                Align.left,
+                Align.center,
                 true);
     }
 
