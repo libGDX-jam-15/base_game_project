@@ -1,7 +1,10 @@
 package core.Screens.game.logic;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 import core.Screens.game.stuff.GameStuff;
 
+import static core.config.GameConfig.SCREEN_HEIGHT;
 import static core.config.GameConfig.SCREEN_WIDTH;
 
 public class BlinkLogic {
@@ -12,12 +15,23 @@ public class BlinkLogic {
     private boolean flag;
     private final float countDown = 3;
     private final float countUp = 1.5f;
+    private Sprite keyFrameBB;
+    private Sprite keyFrameBT;
+    private float height;
 
     public BlinkLogic() {
         width = SCREEN_WIDTH - 400;
         stateTime = 0.0f;
         waitTime = 0.0f;
         flag = true;
+        //keyFrameBB = stuff.getKeyFrameBB();
+        //keyFrameBT = stuff.getKeyFrameBT();
+
+        //keyFrameBB.setPosition(0, 0 - keyFrameBB.getHeight());
+        //keyFrameBT.setPosition(0, SCREEN_HEIGHT);
+
+        //keyFrameBB.setSize(SCREEN_WIDTH, keyFrameBB.getWidth());
+        //keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
     }
 
     public void update(float delta){

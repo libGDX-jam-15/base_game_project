@@ -1,7 +1,10 @@
 package core.Screens.game.stuff;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import core.Screens.game.GameAssets;
 import core.Screens.game.stuff.powers.GameGoal;
@@ -26,6 +29,13 @@ public class GameStuff {
     private Sprite backBar;
     private Sprite frontBar;
 
+
+    private Sprite keyFrameBB;
+    private Sprite keyFrameBT;
+
+    private TextureAtlas blinkingAtlas;
+    private Animation<TextureRegion> blinkingTop, blinkingBottom;
+
     public void initializeStuff(LevelConfig levelConfig) {
         background = new Sprite(assets.getStarfield());
         background.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -47,6 +57,12 @@ public class GameStuff {
         frontBar = new Sprite(assets.getFrontBar());
         frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
 
+        blinkingAtlas = assets.getBlinkingAtlas();
+        blinkingBottom = assets.getBlinkingBottom();
+        blinkingTop = assets.getBlinkingTop();
+
+        keyFrameBB = new Sprite(assets.getKeyFrameBB());
+        keyFrameBT = new Sprite(assets.getKeyFrameBT());
     }
 
     private void addGameGoal(LevelConfig levelConfig){
@@ -88,6 +104,27 @@ public class GameStuff {
     public Sprite getBackBar(){ return backBar; }
 
     public Sprite getFrontBar(){return frontBar; }
+
+    public TextureAtlas getBlinkingAtlas() {
+        return blinkingAtlas;
+    }
+
+    public Animation<TextureRegion> getBlinkingTop() {
+        return blinkingTop;
+    }
+
+    public Animation<TextureRegion> getBlinkingBottom() {
+        return blinkingBottom;
+    }
+
+
+    public Sprite getKeyFrameBB() {
+        return keyFrameBB;
+    }
+
+    public Sprite getKeyFrameBT() {
+        return keyFrameBT;
+    }
 
     // In general, stuff needs assets at initialization time
     public void setAssets(GameAssets assets) {

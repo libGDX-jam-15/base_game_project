@@ -21,6 +21,7 @@ public class LoadingPaths {
         list.add(ImagesPaths.DRAGON_LANTERN);
         list.add(ImagesPaths.BACK_BAR);
         list.add(ImagesPaths.FRONT_BAR);
+
         return list;
     }
 
@@ -51,5 +52,15 @@ public class LoadingPaths {
 
         return list;
     }
+
+    public List<String> getTextureAtlasPaths(){
+        List<String> list = new ArrayList<>();
+
+        list.add(ImagesPaths.BLINKING_ATLAS);
+
+        return list;
+    }
+
+
 
 }

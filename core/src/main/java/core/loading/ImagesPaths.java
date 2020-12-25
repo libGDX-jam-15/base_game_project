@@ -22,6 +22,8 @@ public class ImagesPaths {
     public static final String BACK_BAR = "testSleepBack.png";
     public static final String FRONT_BAR = "testSleepFront.png";
 
+    public static final String BLINKING_ATLAS = "Blinking.atlas";
+
     private ImagesPaths() {
     }
 }

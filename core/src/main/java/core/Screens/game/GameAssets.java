@@ -2,8 +2,11 @@ package core.Screens.game;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
@@ -12,11 +15,31 @@ public class GameAssets {
 
     private final AssetManager assetManager;
     // Sprites
-    private Sprite starfield, robotFrame, robot, pilotFrame, pilot, cell, testPlayer, testExit, pixel, arrow,
-    backBar, frontBar;
+    private Sprite starfield;
+    private Sprite robotFrame;
+    private Sprite robot;
+    private Sprite pilotFrame;
+    private Sprite pilot;
+    private Sprite cell;
+    private Sprite testPlayer;
+    private Sprite testExit;
+    private Sprite pixel;
+    private Sprite arrow;
+    private Sprite backBar;
+    private Sprite frontBar;
+
+
+    private Sprite keyFrameBB;
+    private Sprite keyFrameBT;
     // Fonts
     private BitmapFont pixelFont;
     // Audio
+
+
+    //atlas + animations
+    private TextureAtlas blinkingAtlas;
+
+    private Animation<TextureRegion> blinkingBottom, blinkingTop;
 
     public GameAssets(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -39,6 +62,13 @@ public class GameAssets {
 
         backBar = new Sprite(assetManager.get(ImagesPaths.BACK_BAR, Texture.class));
         frontBar = new Sprite(assetManager.get(ImagesPaths.FRONT_BAR, Texture.class));
+
+        blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
+        blinkingTop = new Animation<TextureRegion>(1/16f, getBlinkingAtlas().findRegions("eyelid"));
+        blinkingBottom = new Animation<TextureRegion>(1/16f, getBlinkingAtlas().findRegions("eyelid"));
+
+        keyFrameBB = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
+        keyFrameBT = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
     }
 
     // Asset getters
@@ -89,4 +119,25 @@ public class GameAssets {
     public Sprite getBackBar(){return backBar; }
 
     public Sprite getFrontBar(){return frontBar; }
+
+    public TextureAtlas getBlinkingAtlas() {
+        return blinkingAtlas;
+    }
+
+    public Animation<TextureRegion> getBlinkingBottom() {
+        return blinkingBottom;
+    }
+
+    public Animation<TextureRegion> getBlinkingTop() {
+        return blinkingTop;
+    }
+
+    public Sprite getKeyFrameBB() {
+        return keyFrameBB;
+    }
+
+    public Sprite getKeyFrameBT() {
+        return keyFrameBT;
+    }
+
 }

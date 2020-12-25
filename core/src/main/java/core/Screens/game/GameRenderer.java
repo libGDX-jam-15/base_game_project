@@ -26,6 +26,8 @@ public class GameRenderer {
         stuff.getGameGoal().draw(spriteBatch);
         stuff.getBackBar().draw(spriteBatch);
         stuff.getFrontBar().draw(spriteBatch);
+        stuff.getKeyFrameBB().draw(spriteBatch);
+        stuff.getKeyFrameBT().draw(spriteBatch);
         spriteBatch.end();
     }
 

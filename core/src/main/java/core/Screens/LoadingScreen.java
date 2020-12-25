@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -85,7 +86,18 @@ public class LoadingScreen extends ScreenAdapter {
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, Sound.class);
                     });
+
+        //TextureAtlases
+        if (loadingPaths.getTextureAtlasPaths() != null)
+            loadingPaths.getTextureAtlasPaths()
+                    .forEach(path -> {
+                        if (path != null) assetManager.load(path, TextureAtlas.class);
+                    });
+
+
+
     }
+
 
     @Override
     public void render(float delta) {
