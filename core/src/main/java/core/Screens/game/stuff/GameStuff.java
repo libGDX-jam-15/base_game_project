@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import core.Screens.game.GameAssets;
+import core.Screens.game.stuff.powers.GameGoal;
 import core.level.LevelConfig;
 
 import static core.config.Constants.CELL_SIZE;
@@ -21,6 +22,7 @@ public class GameStuff {
     private Grid grid;
     private Sprite hover;
     private Player player;
+    private GameGoal gameGoal;
     private Sprite backBar;
     private Sprite frontBar;
 
@@ -36,14 +38,22 @@ public class GameStuff {
         hover.setSize(CELL_SIZE, CELL_SIZE);
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getTestPlayer());
-        Vector2 playerInitialPosition = levelConfig.getPlayerInitialPosition();
-        player.setPosition(grid.getCells()[(int) playerInitialPosition.x][(int) playerInitialPosition.y]); // player start position
+        player.setPosition(grid.getCells()[(int) levelConfig.getPlayerInitialPosition().x][(int) levelConfig.getPlayerInitialPosition().y]); // player start position
+
+        addGameGoal(levelConfig);
         backBar = new Sprite(assets.getBackBar());
         backBar.setPosition(100, SCREEN_HEIGHT - backBar.getHeight() - 20);
         backBar.setSize(SCREEN_WIDTH - 400, backBar.getHeight());
         frontBar = new Sprite(assets.getFrontBar());
         frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
 
+    }
+
+    private void addGameGoal(LevelConfig levelConfig){
+        Cell cell = grid.getCells()[(int) levelConfig.getExitPosition().x][(int) levelConfig.getExitPosition().y];
+        gameGoal = new GameGoal(assets.getTestExit());
+        gameGoal.setPosition(cell.getX(), cell.getY());
+        cell.setContent(gameGoal);
     }
 
     // Stuff getters
@@ -82,5 +92,9 @@ public class GameStuff {
     // In general, stuff needs assets at initialization time
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public GameGoal getGameGoal() {
+        return gameGoal;
     }
 }

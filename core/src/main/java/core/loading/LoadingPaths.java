@@ -15,6 +15,7 @@ public class LoadingPaths {
         list.add(ImagesPaths.PILOT);
         list.add(ImagesPaths.CELL);
         list.add(ImagesPaths.TEST_PLAYER);
+        list.add(ImagesPaths.TEST_EXIT);
         list.add(ImagesPaths.PIXEL);
         list.add(ImagesPaths.ARROW);
         list.add(ImagesPaths.DRAGON_LANTERN);

@@ -15,13 +15,14 @@ public class MovementLogic {
     private float stateTime;
     private MoveStates moveState;
 
-    public MovementLogic(int playerInitialX, int playerInitialY) {
-        column = playerInitialX;
-        row = playerInitialY;
+    public MovementLogic() {
         this.moveState = MoveStates.Right;
     }
 
     public void update(float delta) {
+        column = stuff.getPlayer().getCell().getColumn();
+        row = stuff.getPlayer().getCell().getRow();
+
         stateTime += delta;
         if (stateTime > 2) {
             if (moveState == MoveStates.Up) {
