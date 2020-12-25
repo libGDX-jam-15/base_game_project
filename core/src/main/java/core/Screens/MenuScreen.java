@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import core.GameMain;
 import core.Screens.game.GameScreen;
+import core.audio.AudioHandler;
 import core.config.GameConfig;
 
 /**
@@ -25,9 +26,11 @@ public class MenuScreen extends ScreenAdapter {
     private FitViewport viewport;
     private Stage stage;
     private Skin skin;
+    private AudioHandler audioHandler;
 
     public MenuScreen(GameMain game) {
         this.game = game;
+        this.audioHandler = new AudioHandler(game);
     }
 
     @Override
@@ -73,6 +76,7 @@ public class MenuScreen extends ScreenAdapter {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
                 game.setScreen(new GameScreen(game, 1));
             }
         });

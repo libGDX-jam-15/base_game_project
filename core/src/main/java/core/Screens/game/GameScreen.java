@@ -1,11 +1,10 @@
 package core.Screens.game;
 
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.Color;
-
 import core.GameMain;
 import core.Screens.game.logic.GameLogic;
 import core.Screens.game.stuff.GameStuff;
+import core.audio.AudioHandler;
 import core.level.LevelConfig;
 import core.level.LevelJsonParser;
 import core.util.GdxUtils;
@@ -16,9 +15,11 @@ public class GameScreen extends ScreenAdapter {
     private final GameLogic logic;
     private final GameRenderer renderer;
     private LevelJsonParser parser = new LevelJsonParser();
+    private AudioHandler audioHandler;
 
     public GameScreen(GameMain game, int levelNumber) {
         this.game = game;
+        this.audioHandler = new AudioHandler(game);
         LevelConfig levelConfig = parser.getLevelConfig(levelNumber);
 
 

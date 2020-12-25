@@ -46,7 +46,7 @@ public class LoadingPaths {
         List<String> list = new ArrayList<>();
 
         //Menu
-//        list.add(SoundPaths.CORRECT_AUDIO);
+        list.add(SoundPaths.MENU_BUTTON_AUDIO);
 
         return list;
     }
