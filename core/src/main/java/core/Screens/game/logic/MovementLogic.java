@@ -15,9 +15,9 @@ public class MovementLogic {
     private float stateTime;
     private MoveStates moveState;
 
-    public MovementLogic() {
-        column = 0;
-        row = 0;
+    public MovementLogic(int playerInitialX, int playerInitialY) {
+        column = playerInitialX;
+        row = playerInitialY;
         this.moveState = MoveStates.Right;
     }
 

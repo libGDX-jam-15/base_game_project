@@ -1,6 +1,8 @@
 package core.level;
 
 
+import com.badlogic.gdx.math.Vector2;
+
 import java.util.ArrayList;
 
 public class LevelConfig {
@@ -10,6 +12,20 @@ public class LevelConfig {
     private int blackoutIntervals;
     private ArrayList<String> texts;
     private ArrayList<Integer> listOfPowerUps;
+
+
+
+    public Vector2 getPlayerInitialPosition(){
+        for(int i = 0; i <= levelMap.length - 1; i++) {
+            for (int j = 0; j <= levelMap[i].length - 1; j++) {
+                if (levelMap[i][j].equals("1")) {
+                    return new Vector2(j, levelMap.length - i - 1);
+                }
+            }
+        }
+        return new Vector2(0, 7);
+    }
+
 
     public int getLevelId() {
         return levelId;

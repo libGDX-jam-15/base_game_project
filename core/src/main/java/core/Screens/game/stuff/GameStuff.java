@@ -2,7 +2,9 @@ package core.Screens.game.stuff;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 import core.Screens.game.GameAssets;
+import core.level.LevelConfig;
 
 import static core.config.Constants.CELL_SIZE;
 import static core.config.GameConfig.SCREEN_HEIGHT;
@@ -22,7 +24,7 @@ public class GameStuff {
     private Sprite backBar;
     private Sprite frontBar;
 
-    public void initializeStuff() {
+    public void initializeStuff(LevelConfig levelConfig) {
         background = new Sprite(assets.getStarfield());
         background.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         powersPanel = new PowersPanel(assets.getPixel());
@@ -34,7 +36,8 @@ public class GameStuff {
         hover.setSize(CELL_SIZE, CELL_SIZE);
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getTestPlayer());
-        player.setPosition(grid.getCells()[0][0]);
+        Vector2 playerInitialPosition = levelConfig.getPlayerInitialPosition();
+        player.setPosition(grid.getCells()[(int) playerInitialPosition.x][(int) playerInitialPosition.y]); // player start position
         backBar = new Sprite(assets.getBackBar());
         backBar.setPosition(100, SCREEN_HEIGHT - backBar.getHeight() - 20);
         backBar.setSize(SCREEN_WIDTH - 400, backBar.getHeight());
