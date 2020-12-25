@@ -28,7 +28,7 @@ public class GameScreen extends ScreenAdapter {
         // Create components
         GameAssets assets = new GameAssets(game.getAssetManager());
         GameInput input = new GameInput();
-        logic = new GameLogic();
+        logic = new GameLogic(levelConfig);
         renderer = new GameRenderer();
         GameStuff stuff = new GameStuff();
         // Connect the components (not everything to everything, just as needed)
@@ -39,7 +39,7 @@ public class GameScreen extends ScreenAdapter {
         stuff.setAssets(assets);
         // Initialize assets and stuff
         assets.initializeAssets();
-        stuff.initializeStuff();
+        stuff.initializeStuff(levelConfig);
     }
 
 
