@@ -1,9 +1,7 @@
 package core.Screens.game.stuff;
 
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-
 import core.Screens.game.GameAssets;
 
 import static core.config.Constants.CELL_SIZE;

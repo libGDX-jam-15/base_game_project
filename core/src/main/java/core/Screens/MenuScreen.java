@@ -14,7 +14,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import core.GameMain;
 import core.Screens.game.GameScreen;
+import core.audio.AudioHandler;
 import core.config.GameConfig;
+import core.util.GdxUtils;
 
 /**
  * First screen of the application. Displayed after the application is created.
@@ -25,9 +27,11 @@ public class MenuScreen extends ScreenAdapter {
     private FitViewport viewport;
     private Stage stage;
     private Skin skin;
+    private AudioHandler audioHandler;
 
     public MenuScreen(GameMain game) {
         this.game = game;
+        this.audioHandler = game.getAudioHandler();
     }
 
     @Override
@@ -39,40 +43,45 @@ public class MenuScreen extends ScreenAdapter {
 
         stage = new Stage(viewport, game.batch);
 
-        game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
+        game.getAssetManager().load("Skins/default/uiskin.json", Skin.class);
         game.getAssetManager().finishLoading();
 
 
-        skin = game.getAssetManager().get("Skins/freezing-ui.json");
+        skin = game.getAssetManager().get("Skins/default/uiskin.json");
         Gdx.input.setInputProcessor(stage);
 
         Table table = new Table();
         table.setFillParent(true);
 
-        Label nameLabel = new Label("SLEEPER JEEPER", skin, "pixelFont");
+        Label nameLabel = new Label("SLEEPER JEEPER", skin, "default");
         nameLabel.setEllipsis("...");
         table.add(nameLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
         table.row();
-        TextButton playButton = new TextButton("PLAY!", skin, "pixelFont");
+        TextButton playButton = new TextButton("PLAY!", skin, "default");
         table.add(playButton).spaceBottom(10.0f).fillX();
 
         table.row();
-        TextButton levelsButton = new TextButton("LEVELS", skin, "pixelFont");
+        TextButton levelsButton = new TextButton("LEVELS", skin, "default");
         table.add(levelsButton).spaceBottom(10.0f).fillX();
 
         table.row();
-        TextButton highScoreButton = new TextButton("HighScores", skin, "pixelFont");
+        TextButton highScoreButton = new TextButton("HighScores", skin, "default");
         table.add(highScoreButton).spaceBottom(10.0f).fillX();
 
         table.row();
         Label versionLabel = new Label(GameConfig.GAME_VERSION, skin);
-        table.add(versionLabel).spaceTop(5.0f).spaceBottom(10.0f);
+        table.add(versionLabel).spaceTop(2.0f).spaceBottom(10.0f);
+
+        table.row();
+        Label numberOfTimesPlayed = new Label("Number of times played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
+        table.add(numberOfTimesPlayed).spaceTop(2.0f).spaceBottom(10.0f);
 
         // Add listeners to buttons
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
                 game.setScreen(new GameScreen(game, 1));
             }
         });
@@ -82,6 +91,7 @@ public class MenuScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+        GdxUtils.clearScreen();
         viewport.apply();
         game.batch.setProjectionMatrix(cam.combined);
         stage.draw();

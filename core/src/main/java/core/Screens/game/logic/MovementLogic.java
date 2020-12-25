@@ -1,8 +1,6 @@
 package core.Screens.game.logic;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
-
 import core.Screens.game.stuff.Cell;
 import core.Screens.game.stuff.CellContent;
 import core.Screens.game.stuff.GameStuff;

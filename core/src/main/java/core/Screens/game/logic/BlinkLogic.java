@@ -1,7 +1,5 @@
 package core.Screens.game.logic;
 
-import com.badlogic.gdx.Screen;
-
 import core.Screens.game.stuff.GameStuff;
 
 import static core.config.GameConfig.SCREEN_WIDTH;
