@@ -18,6 +18,8 @@ public class LoadingPaths {
         list.add(ImagesPaths.PIXEL);
         list.add(ImagesPaths.ARROW);
         list.add(ImagesPaths.DRAGON_LANTERN);
+        list.add(ImagesPaths.BACK_BAR);
+        list.add(ImagesPaths.FRONT_BAR);
         return list;
     }
 

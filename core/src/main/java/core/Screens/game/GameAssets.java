@@ -12,7 +12,8 @@ public class GameAssets {
 
     private final AssetManager assetManager;
     // Sprites
-    private Sprite starfield, robotFrame, robot, pilotFrame, pilot, cell, testPlayer, pixel, arrow;
+    private Sprite starfield, robotFrame, robot, pilotFrame, pilot, cell, testPlayer, pixel, arrow,
+    backBar, frontBar;
     // Fonts
     private BitmapFont pixelFont;
     // Audio
@@ -34,6 +35,9 @@ public class GameAssets {
 
         pixelFont = assetManager.get(FontsPaths.PIXEL_FONT, BitmapFont.class);
         pixelFont.getData().setScale(0.5f);
+
+        backBar = new Sprite(assetManager.get(ImagesPaths.BACK_BAR, Texture.class));
+        frontBar = new Sprite(assetManager.get(ImagesPaths.FRONT_BAR, Texture.class));
     }
 
     // Asset getters
@@ -76,4 +80,8 @@ public class GameAssets {
     public BitmapFont getPixelFont() {
         return pixelFont;
     }
+
+    public Sprite getBackBar(){return backBar; }
+
+    public Sprite getFrontBar(){return frontBar; }
 }

@@ -1,5 +1,6 @@
 package core.Screens.game.stuff;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
@@ -20,6 +21,8 @@ public class GameStuff {
     private Grid grid;
     private Sprite hover;
     private Player player;
+    private Sprite backBar;
+    private Sprite frontBar;
 
     public void initializeStuff() {
         background = new Sprite(assets.getStarfield());
@@ -34,6 +37,12 @@ public class GameStuff {
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getTestPlayer());
         player.setPosition(grid.getCells()[0][0]);
+        backBar = new Sprite(assets.getBackBar());
+        backBar.setPosition(100, SCREEN_HEIGHT - backBar.getHeight() - 20);
+        backBar.setSize(SCREEN_WIDTH - 400, backBar.getHeight());
+        frontBar = new Sprite(assets.getFrontBar());
+        frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
+
     }
 
     // Stuff getters
@@ -64,6 +73,10 @@ public class GameStuff {
     public Player getPlayer() {
         return player;
     }
+
+    public Sprite getBackBar(){ return backBar; }
+
+    public Sprite getFrontBar(){return frontBar; }
 
     // In general, stuff needs assets at initialization time
     public void setAssets(GameAssets assets) {

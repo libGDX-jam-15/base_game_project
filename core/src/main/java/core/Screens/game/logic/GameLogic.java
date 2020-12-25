@@ -10,6 +10,7 @@ public class GameLogic {
     private final MessageHandler messageHandler;
     private final MovementLogic movementLogic;
     private final PowerSpawner powerSpawner;
+    private final BlinkLogic blinkLogic;
 
     public GameLogic() {
         dragAndDropHandler = new DragAndDropHandler();
@@ -17,14 +18,17 @@ public class GameLogic {
         messageHandler =  new MessageHandler();
         movementLogic = new MovementLogic();
         powerSpawner = new PowerSpawner();
+        blinkLogic = new BlinkLogic();
+
 
         inputHandler.setLogic(this);
     }
 
     public void update(float delta) {
         messageHandler.update(delta);
-        movementLogic.update();
+        movementLogic.update(delta);
         powerSpawner.update(delta);
+        blinkLogic.update(delta);
     }
 
     public void setAssets(GameAssets assets) {
@@ -37,6 +41,7 @@ public class GameLogic {
         messageHandler.setStuff(stuff);
         movementLogic.setStuff(stuff);
         powerSpawner.setStuff(stuff);
+        blinkLogic.setStuff(stuff);
     }
 
     public DragAndDropHandler getDragAndDropHandler() {
