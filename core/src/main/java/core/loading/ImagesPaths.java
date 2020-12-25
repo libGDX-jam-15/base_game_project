@@ -18,6 +18,9 @@ public class ImagesPaths {
     public static final String UI_SKIN_ATLAS = "skins/default/uiskin.atlas";
     public static final String UI_SKIN_JSON = "skins/default/uiskin.json";
 
+    public static final String BACK_BAR = "testSleepBack.png";
+    public static final String FRONT_BAR = "testSleepFront.png";
+
     private ImagesPaths() {
     }
 }

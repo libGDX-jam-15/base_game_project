@@ -23,8 +23,8 @@ public class MovementLogic {
         this.moveState = MoveStates.Right;
     }
 
-    public void update() {
-        stateTime += Gdx.graphics.getDeltaTime();
+    public void update(float delta) {
+        stateTime += delta;
         if (stateTime > 2) {
             if (moveState == MoveStates.Up) {
                 this.row++;

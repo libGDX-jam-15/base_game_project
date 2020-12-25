@@ -23,6 +23,8 @@ public class GameRenderer {
         stuff.getHover().draw(spriteBatch);
         stuff.getPowersPanel().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
+        stuff.getBackBar().draw(spriteBatch);
+        stuff.getFrontBar().draw(spriteBatch);
         spriteBatch.end();
     }
 
