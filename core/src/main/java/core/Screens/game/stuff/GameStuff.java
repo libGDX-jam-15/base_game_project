@@ -16,6 +16,7 @@ public class GameStuff {
     private Sprite background;
     private PowersPanel powersPanel;
     private RobotFrame robotFrame;
+    private PilotFrame pilotFrame;
     private Grid grid;
     private Sprite hover;
     private Player player;
@@ -25,6 +26,8 @@ public class GameStuff {
         background.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         powersPanel = new PowersPanel(assets.getPixel());
         robotFrame = new RobotFrame(assets.getPixel(), assets.getRobotFrame(), assets.getRobot(), assets.getPixelFont());
+        // TODO: Awake, half awake, half asleep, asleep images needed
+        pilotFrame = new PilotFrame(assets.getPilotFrame(), assets.getPilot(), assets.getPilot(), assets.getPilot(), assets.getPilot());
         grid = new Grid(assets.getCell());
         hover = new Sprite(assets.getPixel());
         hover.setSize(CELL_SIZE, CELL_SIZE);
@@ -44,6 +47,10 @@ public class GameStuff {
 
     public RobotFrame getRobotFrame() {
         return robotFrame;
+    }
+
+    public PilotFrame getPilotFrame() {
+        return pilotFrame;
     }
 
     public Grid getGrid() {

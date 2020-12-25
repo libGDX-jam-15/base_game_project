@@ -7,6 +7,8 @@ public class ImagesPaths {
     public static final String STARFIELD = "starfield2.png";
     public static final String ROBOT_FRAME = "robotFrame.png";
     public static final String ROBOT = "robot.png";
+    public static final String PILOT_FRAME = "images/pilotFrame.png";
+    public static final String PILOT = "images/pilot.png";
     public static final String CELL = "cell.png";
     public static final String TEST_PLAYER = "testPlayer.png";
     public static final String PIXEL = "pixel.png";

@@ -11,6 +11,8 @@ public class LoadingPaths {
         list.add(ImagesPaths.STARFIELD);
         list.add(ImagesPaths.ROBOT_FRAME);
         list.add(ImagesPaths.ROBOT);
+        list.add(ImagesPaths.PILOT_FRAME);
+        list.add(ImagesPaths.PILOT);
         list.add(ImagesPaths.CELL);
         list.add(ImagesPaths.TEST_PLAYER);
         list.add(ImagesPaths.PIXEL);

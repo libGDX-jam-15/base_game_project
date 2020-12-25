@@ -27,7 +27,7 @@ public class Constants {
     public static final int ROBOT_FRAME_BACKGROUND_Y = GRID_HEIGHT + ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT / 2 - ROBOT_FRAME_BACKGROUND_HEIGHT / 2;
     public static final int ROBOT_FRAME_ROBOT_WIDTH = ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH / 2;
     public static final int ROBOT_FRAME_ROBOT_HEIGHT = ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT;
-    public static final int ROBOT_FRAME_MESSAGE_WIDTH = ROBOT_FRAME_BACKGROUND_WIDTH - ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH;
+    public static final int ROBOT_FRAME_MESSAGE_WIDTH = ROBOT_FRAME_BACKGROUND_WIDTH - ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH - CELL_SIZE;
     public static final String[] ROBOT_MESSAGES = {
             "Wake up sir you are gonna die! please wake up!",
             "WAKE UP OMG OMG OMG!!!",
@@ -35,4 +35,13 @@ public class Constants {
             "Find a way to stay alert captain! You're gonna fall asleep!",
             "If you don't wake up right now the ship is gonna crash!!",
     };
+    // Pilot frame
+    public static final int PILOT_FRAME_X = GRID_WIDTH - CELL_SIZE * 2;
+    public static final int PILOT_FRAME_Y = GRID_HEIGHT;
+    public static final int PILOT_FRAME_WIDTH = SCREEN_WIDTH - GRID_WIDTH + CELL_SIZE * 2;
+    public static final int PILOT_FRAME_HEIGHT = SCREEN_HEIGHT - GRID_HEIGHT;
+    public static final int PILOT_FRAME_PILOT_HEIGHT = (int) (PILOT_FRAME_HEIGHT * 0.8f);
+    public static final int PILOT_FRAME_PILOT_WIDTH = PILOT_FRAME_WIDTH / 2;
+    public static final int PILOT_FRAME_PILOT_X = PILOT_FRAME_X + PILOT_FRAME_WIDTH / 2 - PILOT_FRAME_PILOT_WIDTH / 2;
+    public static final int PILOT_FRAME_PILOT_Y = PILOT_FRAME_Y + PILOT_FRAME_HEIGHT / 2 - PILOT_FRAME_PILOT_HEIGHT / 2;
 }

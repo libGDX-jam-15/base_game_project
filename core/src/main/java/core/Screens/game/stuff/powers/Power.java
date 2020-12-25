@@ -27,6 +27,6 @@ public abstract class Power extends CellContent {
     @Override
     public void setCell(Cell cell) {
         super.setCell(cell);
-        sprite.setSize(CELL_SIZE,CELL_SIZE);
+        sprite.setSize(CELL_SIZE, CELL_SIZE);
     }
 }
