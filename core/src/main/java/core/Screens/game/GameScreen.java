@@ -7,6 +7,7 @@ import core.Screens.game.stuff.GameStuff;
 import core.audio.AudioHandler;
 import core.level.LevelConfig;
 import core.level.LevelJsonParser;
+import core.save.LevelSave;
 import core.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter {
@@ -21,6 +22,7 @@ public class GameScreen extends ScreenAdapter {
         this.game = game;
         this.audioHandler = new AudioHandler(game);
         LevelConfig levelConfig = parser.getLevelConfig(levelNumber);
+        game.getGameSaveHandler().saveLevelData(new LevelSave(1, levelNumber, 0, false ));
 
 
         // Create components

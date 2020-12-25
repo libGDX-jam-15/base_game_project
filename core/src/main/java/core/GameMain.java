@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import core.Screens.LoadingScreen;
 import core.Screens.MenuScreen;
+import core.audio.AudioHandler;
 import core.config.GameConfig;
 import core.loading.LoadingPaths;
+import core.save.GameSaveHandler;
+import core.save.LevelSave;
 
 public class GameMain extends Game {
     private float screenWidth;
@@ -18,6 +21,9 @@ public class GameMain extends Game {
 
     public SpriteBatch batch;
     public MenuScreen menuScreen;
+    private AudioHandler audioHandler;
+    private GameSaveHandler gameSaveHandler;
+
 
     public GameMain() {
         super();
@@ -26,19 +32,19 @@ public class GameMain extends Game {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        menuScreen = new MenuScreen(this);
+        audioHandler = new AudioHandler(this);
+        gameSaveHandler = new GameSaveHandler();
 
         screenWidth = GameConfig.SCREEN_WIDTH;
         screenHeight = GameConfig.SCREEN_HEIGHT;
 
 //		setScreen(menuScreen);
-        setScreen(new LoadingScreen(this, loadingPaths, menuScreen));
+        setScreen(new LoadingScreen(this, loadingPaths,  new MenuScreen(this)));
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        menuScreen.dispose();
         assetManager.dispose();
         super.dispose();
     }
@@ -77,5 +83,13 @@ public class GameMain extends Game {
 
     public LoadingPaths getLoadingPaths() {
         return loadingPaths;
+    }
+
+    public AudioHandler getAudioHandler() {
+        return audioHandler;
+    }
+
+    public GameSaveHandler getGameSaveHandler() {
+        return gameSaveHandler;
     }
 }
