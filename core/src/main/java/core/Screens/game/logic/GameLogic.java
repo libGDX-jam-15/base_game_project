@@ -13,11 +13,11 @@ public class GameLogic {
     private final PowerSpawner powerSpawner;
     private final BlinkLogic blinkLogic;
 
-    public GameLogic(LevelConfig levelConfig) {
+    public GameLogic() {
         dragAndDropHandler = new DragAndDropHandler();
         inputHandler = new InputHandler();
         messageHandler = new MessageHandler();
-        movementLogic = new MovementLogic((int) levelConfig.getPlayerInitialPosition().x, (int) levelConfig.getPlayerInitialPosition().y);
+        movementLogic = new MovementLogic();
         powerSpawner = new PowerSpawner();
         blinkLogic = new BlinkLogic();
 

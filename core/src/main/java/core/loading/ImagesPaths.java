@@ -11,6 +11,7 @@ public class ImagesPaths {
     public static final String PILOT = "images/pilot.png";
     public static final String CELL = "cell.png";
     public static final String TEST_PLAYER = "testPlayer.png";
+    public static final String TEST_EXIT = "exit.jpg";
     public static final String PIXEL = "pixel.png";
     public static final String ARROW = "arrowUp.png";
     public static final String DRAGON_LANTERN = "dragonLantern.jpg";

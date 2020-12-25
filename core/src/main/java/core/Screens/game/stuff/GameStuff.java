@@ -21,6 +21,7 @@ public class GameStuff {
     private Grid grid;
     private Sprite hover;
     private Player player;
+    private GameGoal gameGoal;
     private Sprite backBar;
     private Sprite frontBar;
 
@@ -36,8 +37,10 @@ public class GameStuff {
         hover.setSize(CELL_SIZE, CELL_SIZE);
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getTestPlayer());
-        Vector2 playerInitialPosition = levelConfig.getPlayerInitialPosition();
-        player.setPosition(grid.getCells()[(int) playerInitialPosition.x][(int) playerInitialPosition.y]); // player start position
+        player.setPosition(grid.getCells()[(int) levelConfig.getPlayerInitialPosition().x][(int) levelConfig.getPlayerInitialPosition().y]); // player start position
+
+        gameGoal = new GameGoal(assets.getTestExit());
+        gameGoal.setPosition(grid.getCells()[(int) levelConfig.getExitPosition().x][(int) levelConfig.getExitPosition().y]);
         backBar = new Sprite(assets.getBackBar());
         backBar.setPosition(100, SCREEN_HEIGHT - backBar.getHeight() - 20);
         backBar.setSize(SCREEN_WIDTH - 400, backBar.getHeight());
@@ -82,5 +85,9 @@ public class GameStuff {
     // In general, stuff needs assets at initialization time
     public void setAssets(GameAssets assets) {
         this.assets = assets;
+    }
+
+    public GameGoal getGameGoal() {
+        return gameGoal;
     }
 }

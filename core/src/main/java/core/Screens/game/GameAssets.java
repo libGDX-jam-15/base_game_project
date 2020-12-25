@@ -12,7 +12,7 @@ public class GameAssets {
 
     private final AssetManager assetManager;
     // Sprites
-    private Sprite starfield, robotFrame, robot, pilotFrame, pilot, cell, testPlayer, pixel, arrow,
+    private Sprite starfield, robotFrame, robot, pilotFrame, pilot, cell, testPlayer, testExit, pixel, arrow,
     backBar, frontBar;
     // Fonts
     private BitmapFont pixelFont;
@@ -30,6 +30,7 @@ public class GameAssets {
         pilot = new Sprite(assetManager.get(ImagesPaths.PILOT, Texture.class));
         cell = new Sprite(assetManager.get(ImagesPaths.CELL, Texture.class));
         testPlayer = new Sprite(assetManager.get(ImagesPaths.TEST_PLAYER, Texture.class));
+        testExit = new Sprite(assetManager.get(ImagesPaths.TEST_EXIT, Texture.class));
         pixel = new Sprite(assetManager.get(ImagesPaths.PIXEL, Texture.class));
         arrow = new Sprite(assetManager.get(ImagesPaths.ARROW, Texture.class));
 
@@ -67,6 +68,10 @@ public class GameAssets {
 
     public Sprite getTestPlayer() {
         return testPlayer;
+    }
+
+    public Sprite getTestExit() {
+        return testExit;
     }
 
     public Sprite getPixel() {

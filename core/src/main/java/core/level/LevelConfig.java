@@ -16,9 +16,18 @@ public class LevelConfig {
 
 
     public Vector2 getPlayerInitialPosition(){
+        return getElementPosition("1");
+    }
+
+    public Vector2 getExitPosition(){
+        return getElementPosition("9");
+    }
+
+
+    private Vector2 getElementPosition(String element){
         for(int i = 0; i <= levelMap.length - 1; i++) {
             for (int j = 0; j <= levelMap[i].length - 1; j++) {
-                if (levelMap[i][j].equals("1")) {
+                if (levelMap[i][j].equals(element)) {
                     return new Vector2(j, levelMap.length - i - 1);
                 }
             }
