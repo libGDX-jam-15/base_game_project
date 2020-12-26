@@ -61,8 +61,16 @@ public class GameStuff {
         blinkingBottom = assets.getBlinkingBottom();
         blinkingTop = assets.getBlinkingTop();
 
+
         keyFrameBB = new Sprite(assets.getKeyFrameBB());
         keyFrameBT = new Sprite(assets.getKeyFrameBT());
+
+        //Todo set keyFrame width, and positions.
+        //keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
+        keyFrameBB.setSize(SCREEN_WIDTH, keyFrameBB.getHeight());
+
+        keyFrameBT.setPosition(0, SCREEN_HEIGHT);
+        keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
     }
 
     private void addGameGoal(LevelConfig levelConfig){
