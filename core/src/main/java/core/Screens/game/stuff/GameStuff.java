@@ -1,14 +1,18 @@
 package core.Screens.game.stuff;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+
+import core.GameMain;
 import core.Screens.game.GameAssets;
 import core.Screens.game.stuff.powers.GameGoal;
 import core.level.LevelConfig;
+import core.loading.ImagesPaths;
 
 import static core.config.Constants.CELL_SIZE;
 import static core.config.GameConfig.SCREEN_HEIGHT;
@@ -34,9 +38,11 @@ public class GameStuff {
     private Sprite keyFrameBT;
 
     private TextureAtlas blinkingAtlas;
-    private Animation<TextureRegion> blinkingTop, blinkingBottom;
+    private Animation<Sprite> blinkingTop, blinkingBottom;
+
 
     public void initializeStuff(LevelConfig levelConfig) {
+
         background = new Sprite(assets.getStarfield());
         background.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         powersPanel = new PowersPanel(assets.getPixel());
@@ -57,8 +63,9 @@ public class GameStuff {
         frontBar = new Sprite(assets.getFrontBar());
         frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
 
-        blinkingAtlas = assets.getBlinkingAtlas();
-        blinkingBottom = assets.getBlinkingBottom();
+        blinkingAtlas =      assets.getBlinkingAtlas();
+        Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
+        blinkingBottom =  assets.getBlinkingBottom();
         blinkingTop = assets.getBlinkingTop();
 
 
@@ -117,11 +124,11 @@ public class GameStuff {
         return blinkingAtlas;
     }
 
-    public Animation<TextureRegion> getBlinkingTop() {
+    public Animation<Sprite> getBlinkingTop() {
         return blinkingTop;
     }
 
-    public Animation<TextureRegion> getBlinkingBottom() {
+    public Animation<Sprite> getBlinkingBottom() {
         return blinkingBottom;
     }
 

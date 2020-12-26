@@ -39,7 +39,7 @@ public class GameAssets {
     //atlas + animations
     private TextureAtlas blinkingAtlas;
 
-    private Animation<TextureRegion> blinkingBottom, blinkingTop;
+    private Animation<Sprite> blinkingBottom, blinkingTop;
 
     public GameAssets(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -65,8 +65,8 @@ public class GameAssets {
 
         blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
-        blinkingTop = new Animation<TextureRegion>(1.5f/16f, getBlinkingAtlas().findRegions("eyelid"), playMode);
-        blinkingBottom = new Animation<TextureRegion>(1.5f/16f, getBlinkingAtlas().findRegions("eyelid"), playMode);
+        blinkingTop = new Animation<Sprite>(1.5f/16f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingBottom = new Animation<Sprite>(1.5f/16f, getBlinkingAtlas().createSprites("eyelid"), playMode);
 
         keyFrameBB = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
         keyFrameBT = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
@@ -125,11 +125,11 @@ public class GameAssets {
         return blinkingAtlas;
     }
 
-    public Animation<TextureRegion> getBlinkingBottom() {
+    public Animation<Sprite> getBlinkingBottom() {
         return blinkingBottom;
     }
 
-    public Animation<TextureRegion> getBlinkingTop() {
+    public Animation<Sprite> getBlinkingTop() {
         return blinkingTop;
     }
 
