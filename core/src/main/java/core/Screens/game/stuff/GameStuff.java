@@ -73,10 +73,10 @@ public class GameStuff {
         keyFrameBT = new Sprite(assets.getKeyFrameBT());
 
         //Todo set keyFrame width, and positions.
-        //keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
+        keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
         keyFrameBB.setSize(SCREEN_WIDTH, keyFrameBB.getHeight());
 
-        keyFrameBT.setPosition(0, SCREEN_HEIGHT);
+        keyFrameBT.setPosition(0, - keyFrameBT.getHeight());
         keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
     }
 

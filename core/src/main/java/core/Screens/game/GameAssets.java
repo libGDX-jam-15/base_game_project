@@ -65,8 +65,8 @@ public class GameAssets {
 
         blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
-        blinkingTop = new Animation<Sprite>(1.5f/16f, getBlinkingAtlas().createSprites("eyelid"), playMode);
-        blinkingBottom = new Animation<Sprite>(1.5f/16f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingTop = new Animation<Sprite>(1.5f/10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingBottom = new Animation<Sprite>(1.5f/10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
 
         keyFrameBB = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
         keyFrameBT = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));

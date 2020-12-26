@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import core.Screens.game.stuff.GameStuff;
 
+import static core.config.GameConfig.SCREEN_HEIGHT;
 import static core.config.GameConfig.SCREEN_WIDTH;
 
 public class BlinkLogic {
@@ -37,19 +38,26 @@ public class BlinkLogic {
             if (stateTime <= countDown && stateTime >= 0) {
                 stuff.getFrontBar().setSize((countDown - stateTime)*(width/countDown), stuff.getFrontBar().getHeight() );
                 stateTime += delta;
-                //Debug
-                System.out.print(keyFrameBB);
+
             } else {flag = false;
             waitTime = 1.5f;}
         }else if (flag == false){
             stuff.getFrontBar().setSize((countUp - waitTime)*(width/countUp), stuff.getFrontBar().getHeight());
             waitTime -= delta;
+            height = (countUp - waitTime)*SCREEN_HEIGHT/2;
             animationStateTime += delta;
-            keyFrameBB.set(this.blinkingTop.getKeyFrame(animationStateTime, true));
 
-            System.out.println(keyFrameBB);
-            keyFrameBT.set(this.blinkingBottom.getKeyFrame(animationStateTime, true));
+            keyFrameBB.setPosition(0, 0);
+            keyFrameBB.set(this.blinkingBottom.getKeyFrame(animationStateTime, false));
+            keyFrameBB.setSize(SCREEN_WIDTH, height);
 
+
+            keyFrameBT.set(this.blinkingTop.getKeyFrame(animationStateTime, false));
+            keyFrameBT.setPosition(0, SCREEN_HEIGHT);
+            keyFrameBT.setSize(SCREEN_WIDTH, -height);
+
+            if (keyFrameBT.isFlipX() == false){
+            keyFrameBT.flip(true, false);}
 
 
             if(waitTime < 0.0f){
@@ -57,6 +65,10 @@ public class BlinkLogic {
                 animationStateTime = 0;
                 keyFrameBB.set( this.blinkingTop.getKeyFrames()[0]);
                 keyFrameBT.set( this.blinkingBottom.getKeyFrames()[0]);
+                keyFrameBB.setSize(100, 100);
+                keyFrameBT.setSize(100, 100);
+                keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
+                keyFrameBT.setPosition(0, SCREEN_HEIGHT);
                 flag = true;
             }
         }
