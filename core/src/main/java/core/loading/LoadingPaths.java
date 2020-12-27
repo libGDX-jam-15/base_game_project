@@ -44,26 +44,32 @@ public class LoadingPaths {
     }
 
     public List<String> getMusicPaths() {
-        return null;
+        List<String> list = new ArrayList<>();
+
+        list.add(MusicPaths.MOVIN);
+        list.add(MusicPaths.SYNERGY);
+
+        return list;
     }
 
     public List<String> getSoundPaths() {
         List<String> list = new ArrayList<>();
 
-        //Menu
         list.add(SoundPaths.MENU_BUTTON_AUDIO);
+        list.add(SoundPaths.ROBOT_MESSAGE_1);
+        list.add(SoundPaths.ROBOT_MESSAGE_2);
+        list.add(SoundPaths.ROBOT_MESSAGE_3);
+        list.add(SoundPaths.ROBOT_MESSAGE_4);
+        list.add(SoundPaths.ROBOT_MESSAGE_5);
 
         return list;
     }
 
-    public List<String> getTextureAtlasPaths(){
+    public List<String> getTextureAtlasPaths() {
         List<String> list = new ArrayList<>();
 
         list.add(ImagesPaths.BLINKING_ATLAS);
 
         return list;
     }
-
-
-
 }
