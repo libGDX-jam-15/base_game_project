@@ -5,6 +5,9 @@ import static core.config.GameConfig.SCREEN_WIDTH;
 
 public class Constants {
 
+    //
+    public static final String GAME_NAME = "Astro Sleeper";
+
     // Grid
     public static final int GRID_COLUMNS = 20;
     public static final int GRID_ROWS = 10;

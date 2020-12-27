@@ -6,6 +6,8 @@ import core.GameMain;
 
 import core.config.GameConfig;
 
+import static core.config.Constants.GAME_NAME;
+
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
 	public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class Lwjgl3Launcher {
 
 	private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
-		configuration.setTitle("Astro Sleeper");
+		configuration.setTitle(GAME_NAME);
 		configuration.setWindowedMode(GameConfig.SCREEN_DESKTOP_DISPLAY_WIDTH, GameConfig.SCREEN_DESKTOP_DISPLAY_HEIGHT);
 		configuration.setWindowIcon("spaceship_64x64.png", "spaceship_64x64.png", "spaceship_32x32.png", "spaceship_32x32.png");
 		return configuration;
