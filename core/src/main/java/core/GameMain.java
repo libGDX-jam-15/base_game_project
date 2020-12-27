@@ -11,6 +11,8 @@ import core.config.GameConfig;
 import core.loading.LoadingPaths;
 import core.save.GameSaveHandler;
 import core.save.LevelSave;
+import core.screenManager.ScreenEnum;
+import core.screenManager.ScreenManager;
 
 public class GameMain extends Game {
     private float screenWidth;
@@ -38,8 +40,10 @@ public class GameMain extends Game {
         screenWidth = GameConfig.SCREEN_WIDTH;
         screenHeight = GameConfig.SCREEN_HEIGHT;
 
-//		setScreen(menuScreen);
-        setScreen(new LoadingScreen(this, loadingPaths,  new MenuScreen(this)));
+
+        ScreenManager.getInstance().initialize(this);
+        ScreenManager.getInstance()
+                .showScreen(ScreenEnum.LOADING_SCREEN, this, loadingPaths, new MenuScreen(this));
     }
 
     @Override
