@@ -11,14 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-
 import core.GameMain;
-import core.Screens.game.GameScreen;
 import core.audio.AudioHandler;
 import core.config.GameConfig;
 import core.screenManager.ScreenEnum;
 import core.screenManager.ScreenManager;
 import core.util.GdxUtils;
+
+import static core.loading.ImagesPaths.UI_SKIN_JSON;
 
 /**
  * First screen of the application. Displayed after the application is created.
@@ -48,11 +48,11 @@ public class MenuScreen extends ScreenAdapter {
 
         stage = new Stage(viewport, game.batch);
 
-        game.getAssetManager().load("Skins/default/uiskin.json", Skin.class);
+        game.getAssetManager().load(UI_SKIN_JSON, Skin.class);
         game.getAssetManager().finishLoading();
 
 
-        skin = game.getAssetManager().get("Skins/default/uiskin.json");
+        skin = game.getAssetManager().get(UI_SKIN_JSON);
         Gdx.input.setInputProcessor(stage);
 
         Table table = new Table();
@@ -103,7 +103,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-//                todo
+                ScreenManager.getInstance().showScreen( ScreenEnum.ACHIEVEMENTS_SCREEN, game, topLevel );
             }
         });
 

@@ -3,6 +3,7 @@ package core.screenManager;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import core.GameMain;
+import core.Screens.AchievementsScreen;
 import core.Screens.LoadingScreen;
 import core.Screens.MenuScreen;
 import core.Screens.game.GameScreen;
@@ -28,6 +29,15 @@ public enum ScreenEnum implements ScreenEnumInterface {
         public Screen getScreen(Object... params) {
             return new MenuScreen((GameMain)params[0]);
         }
+    },
+    ACHIEVEMENTS_SCREEN {
+        public Screen getScreen(Object... params) {
+            return new AchievementsScreen((GameMain)params[0]);
+        }
     }
+
+
+
+
 
 }
