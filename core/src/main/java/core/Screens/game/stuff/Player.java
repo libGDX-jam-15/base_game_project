@@ -9,6 +9,7 @@ import static core.config.Constants.CELL_SIZE;
 
 public class Player {
 
+
     private final Sprite sprite;
     private Cell cell;
 
@@ -45,4 +46,6 @@ public class Player {
     public Cell getCell() {
         return cell;
     }
+
+    public Sprite getSprite() { return sprite; }
 }
