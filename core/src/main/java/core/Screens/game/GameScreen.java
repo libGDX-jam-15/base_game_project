@@ -35,12 +35,13 @@ public class GameScreen extends ScreenAdapter {
         logic = new GameLogic();
         input.setLogic(logic);
         logic.setAssets(assets);
-        logic.setStuff(stuff);
+       //moved logic.setstuff from here
         renderer.setStuff(stuff);
         stuff.setAssets(assets);
         // Initialize assets and stuff
         assets.initializeAssets();
         stuff.initializeStuff(levelConfig);
+        logic.setStuff(stuff);
     }
 
 
