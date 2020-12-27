@@ -34,8 +34,11 @@ public class AudioHandler {
 
     public void playMusic() {
         Music movin = assetManager.get(MusicPaths.MOVIN);
+        movin.setVolume(0.5f);
         Music synergy = assetManager.get(MusicPaths.SYNERGY);
+        synergy.setVolume(0.5f);
         movin.setOnCompletionListener(music -> synergy.play());
         synergy.setOnCompletionListener(music -> movin.play());
+        movin.play();
     }
 }

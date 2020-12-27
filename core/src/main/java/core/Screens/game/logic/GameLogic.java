@@ -44,6 +44,7 @@ public class GameLogic {
     }
 
     public void setAssets(GameAssets assets) {
+        messageHandler.setAssets(assets);
         powerSpawner.setAssets(assets);
     }
 
