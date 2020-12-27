@@ -11,8 +11,12 @@ import static core.config.Constants.GRID_ROWS;
 public class GridColorLogic {
 
     private GameStuff stuff;
+    private Color colorRed = new Color(1f, 0f, .0f, .33f);
+    private Color colorBlack = new Color(0, 0, 0, .33f);
     // Logic
-    private Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.CHARTREUSE, Color.FOREST, Color.BLUE, Color.PURPLE};
+    private final Color[] colors = { colorBlack, colorRed,/*Color.RED, Color.BLACK, Color.GREEN, Color.BLACK, Color.FIREBRICK, Color.BLACK, Color.ORANGE, Color.BLACK, Color.YELLOW,
+            Color.BLACK, Color.CHARTREUSE, Color.BLACK, Color.FOREST, Color.BLACK,
+            Color.BLUE,Color.BLACK, Color.PURPLE*/};
     private int lastColorIndex;
     private Color color;
     private float progress;
