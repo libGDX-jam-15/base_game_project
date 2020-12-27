@@ -3,7 +3,6 @@ package core.Screens.game.logic;
 import core.GameMain;
 import core.Screens.game.GameAssets;
 import core.Screens.game.stuff.GameStuff;
-import core.level.LevelConfig;
 
 public class GameLogic {
 
@@ -22,8 +21,11 @@ public class GameLogic {
         powerSpawner = new PowerSpawner();
         blinkLogic = new BlinkLogic();
 
-
         inputHandler.setLogic(this);
+    }
+
+    public void initialLogic() {
+        blinkLogic.setCountdowns();
     }
 
     public void update(float delta) {

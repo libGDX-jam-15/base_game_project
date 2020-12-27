@@ -18,55 +18,59 @@ public class BlinkLogic {
     private boolean flag;
     private float countDown = 3;
     private float countUp = 1.5f;
-    private Sprite keyFrameBB;
-    private Sprite keyFrameBT;
     private float height;
     private float animationStateTime;
-    private Animation<Sprite> blinkingTop;
-    private Animation<Sprite> blinkingBottom;
 
     public BlinkLogic() {
         barWidth = SCREEN_WIDTH - 400;
         stateTime = 0.0f;
         waitTime = 0.0f;
         flag = true;
-
     }
 
-    public void update(float delta){
+    public void setCountdowns() {
+        countDown = stuff.getLevelConfig().getBlackoutIntervalTime();
+        countUp = stuff.getLevelConfig().getBlackoutPeriod();
+    }
 
+    public void update(float delta) {
+        Sprite keyFrameBB = stuff.getKeyFrameBB();
+        Sprite keyFrameBT = stuff.getKeyFrameBT();
+        Animation<Sprite> blinkingTop = stuff.getBlinkingTop();
+        Animation<Sprite> blinkingBottom = stuff.getBlinkingBottom();
 
-        if(flag == true) {
+        if (flag) {
             if (stateTime <= countDown && stateTime >= 0) {
-                stuff.getFrontBar().setSize((countDown - stateTime)*(barWidth /countDown), stuff.getFrontBar().getHeight() );
+                stuff.getFrontBar().setSize((countDown - stateTime) * (barWidth / countDown), stuff.getFrontBar().getHeight());
                 stateTime += delta;
 
-            } else {flag = false;
-            waitTime = 1.5f;}
-        }else if (flag == false){
-            stuff.getFrontBar().setSize((countUp - waitTime)*(barWidth /countUp), stuff.getFrontBar().getHeight());
+            } else {
+                flag = false;
+                waitTime = 1.5f;
+            }
+        } else {
+            stuff.getFrontBar().setSize((countUp - waitTime) * (barWidth / countUp), stuff.getFrontBar().getHeight());
             waitTime -= delta;
-            height = (countUp - waitTime)*GRID_HEIGHT/2;
+            height = (countUp - waitTime) * GRID_HEIGHT / 2;
             animationStateTime += delta;
 
             keyFrameBB.setPosition(0, 0);
-            keyFrameBB.set(this.blinkingBottom.getKeyFrame(animationStateTime, false));
+            keyFrameBB.set(blinkingBottom.getKeyFrame(animationStateTime, false));
             keyFrameBB.setSize(GRID_WIDTH, height);
 
-
-            keyFrameBT.set(this.blinkingTop.getKeyFrame(animationStateTime, false));
+            keyFrameBT.set(blinkingTop.getKeyFrame(animationStateTime, false));
             keyFrameBT.setPosition(0, GRID_HEIGHT);
             keyFrameBT.setSize(GRID_WIDTH, -height);
 
-            if (keyFrameBT.isFlipX() == false){
-            keyFrameBT.flip(true, false);}
+            if (!keyFrameBT.isFlipX()) {
+                keyFrameBT.flip(true, false);
+            }
 
-
-            if(waitTime < 0.0f){
+            if (waitTime < 0.0f) {
                 stateTime = 0.0f;
                 animationStateTime = 0;
-                keyFrameBB.set( this.blinkingTop.getKeyFrames()[0]);
-                keyFrameBT.set( this.blinkingBottom.getKeyFrames()[0]);
+                keyFrameBB.set(blinkingTop.getKeyFrames()[0]);
+                keyFrameBT.set(blinkingBottom.getKeyFrames()[0]);
                 keyFrameBB.setSize(100, 100);
                 keyFrameBT.setSize(100, 100);
                 keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
@@ -81,15 +85,6 @@ public class BlinkLogic {
 
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
-
-        countDown = stuff.getLevelConfig().getBlackoutIntervalTime();
-        countUp = stuff.getLevelConfig().getBlackoutPeriod();
-
-        keyFrameBB = ( this.stuff.getKeyFrameBB());
-        keyFrameBT = (this.stuff.getKeyFrameBT());
-
-        blinkingTop = this.stuff.getBlinkingBottom();
-        blinkingBottom = this.stuff.getBlinkingTop();
     }
 
     public void subStateTime(float subTime) {
