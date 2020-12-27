@@ -1,11 +1,13 @@
 package core.Screens.game;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
 
 import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
@@ -36,7 +38,13 @@ public class GameAssets {
     // Fonts
     private BitmapFont pixelFont;
     // Audio
+    private Sound message1;
+    private Sound message2;
+    private Sound message3;
+    private Sound message4;
+    private Sound message5;
 
+    private Array<Sound> soundsArray = new Array<>();
 
     //atlas + animations
     private TextureAtlas blinkingAtlas;
@@ -70,8 +78,8 @@ public class GameAssets {
 
         blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
-        blinkingTop = new Animation<Sprite>(1.5f/10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
-        blinkingBottom = new Animation<Sprite>(1.5f/10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingTop = new Animation<Sprite>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingBottom = new Animation<Sprite>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
 
         keyFrameBB = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
         keyFrameBT = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
@@ -130,9 +138,13 @@ public class GameAssets {
         return pixelFont;
     }
 
-    public Sprite getBackBar(){return backBar; }
+    public Sprite getBackBar() {
+        return backBar;
+    }
 
-    public Sprite getFrontBar(){return frontBar; }
+    public Sprite getFrontBar() {
+        return frontBar;
+    }
 
     public TextureAtlas getBlinkingAtlas() {
         return blinkingAtlas;
