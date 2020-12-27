@@ -93,11 +93,7 @@ public class LoadingScreen extends ScreenAdapter {
                     .forEach(path -> {
                         if (path != null) assetManager.load(path, TextureAtlas.class);
                     });
-
-
-
     }
-
 
     @Override
     public void render(float delta) {
@@ -129,6 +125,5 @@ public class LoadingScreen extends ScreenAdapter {
                 (game.getScreenHeight() - PROGRESS_BAR_HEIGHT / 2),
                 progress * PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
         shapeRenderer.end();
-
     }
 }
