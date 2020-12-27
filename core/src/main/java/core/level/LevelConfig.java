@@ -16,23 +16,30 @@ public class LevelConfig {
 
 
     public Vector2 getPlayerInitialPosition(){
-        return getElementPosition("1");
+        return getElementPosition("1").get(0);
     }
 
     public Vector2 getExitPosition(){
-        return getElementPosition("9");
+        return getElementPosition("9").get(0);
+    }
+
+    public ArrayList<Vector2> getAsteroids(){
+        return getElementPosition("7");
     }
 
 
-    private Vector2 getElementPosition(String element){
+    private ArrayList<Vector2> getElementPosition(String element){
+
+        ArrayList<Vector2> elements = new ArrayList<>();
+
         for(int i = 0; i <= levelMap.length - 1; i++) {
             for (int j = 0; j <= levelMap[i].length - 1; j++) {
                 if (levelMap[i][j].equals(element)) {
-                    return new Vector2(j, levelMap.length - i - 1);
+                    elements.add(new Vector2(j, levelMap.length - i - 1));
                 }
             }
         }
-        return new Vector2(0, 7);
+        return elements;
     }
 
 

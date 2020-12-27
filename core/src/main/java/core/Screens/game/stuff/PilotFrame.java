@@ -27,14 +27,14 @@ public class PilotFrame {
         halfAwake = new Sprite(halfAwakeSprite);
         halfAsleep = new Sprite(halfAsleepSprite);
         asleep = new Sprite(asleepSprite);
-        awake.setPosition(PILOT_FRAME_PILOT_X, PILOT_FRAME_PILOT_Y);
-        halfAwake.setPosition(PILOT_FRAME_PILOT_X, PILOT_FRAME_PILOT_Y);
-        halfAsleep.setPosition(PILOT_FRAME_PILOT_X, PILOT_FRAME_PILOT_Y);
-        asleep.setPosition(PILOT_FRAME_PILOT_X, PILOT_FRAME_PILOT_Y);
-        awake.setSize(PILOT_FRAME_PILOT_WIDTH, PILOT_FRAME_PILOT_HEIGHT);
-        halfAwake.setSize(PILOT_FRAME_PILOT_WIDTH, PILOT_FRAME_PILOT_HEIGHT);
-        halfAsleep.setSize(PILOT_FRAME_PILOT_WIDTH, PILOT_FRAME_PILOT_HEIGHT);
-        asleep.setSize(PILOT_FRAME_PILOT_WIDTH, PILOT_FRAME_PILOT_HEIGHT);
+        awake.setPosition(PILOT_FRAME_X, PILOT_FRAME_Y);
+        halfAwake.setPosition(PILOT_FRAME_X, PILOT_FRAME_Y);
+        halfAsleep.setPosition(PILOT_FRAME_X, PILOT_FRAME_Y);
+        asleep.setPosition(PILOT_FRAME_X, PILOT_FRAME_Y);
+        awake.setSize(PILOT_FRAME_WIDTH, PILOT_FRAME_HEIGHT);
+        halfAwake.setSize(PILOT_FRAME_WIDTH, PILOT_FRAME_HEIGHT);
+        halfAsleep.setSize(PILOT_FRAME_WIDTH, PILOT_FRAME_HEIGHT);
+        asleep.setSize(PILOT_FRAME_WIDTH, PILOT_FRAME_HEIGHT);
         current = awake;
     }
 

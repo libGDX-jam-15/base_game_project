@@ -33,9 +33,8 @@ public class RobotFrame {
         robotBackground.setY(GRID_HEIGHT);
         robotBackground.setSize(ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH, ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT);
         robot = new Sprite(robotSprite);
-        robot.setX(ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH / 2f - ROBOT_FRAME_ROBOT_WIDTH / 2f);
         robot.setY(GRID_HEIGHT);
-        robot.setSize(ROBOT_FRAME_ROBOT_WIDTH, ROBOT_FRAME_ROBOT_HEIGHT);
+        robot.setSize(ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH, ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT);
         this.font = font;
         message = ROBOT_MESSAGES[0];
     }
