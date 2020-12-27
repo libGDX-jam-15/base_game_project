@@ -18,6 +18,7 @@ import core.screenManager.ScreenEnum;
 import core.screenManager.ScreenManager;
 import core.util.GdxUtils;
 
+import static core.config.Constants.GAME_NAME;
 import static core.loading.ImagesPaths.UI_SKIN_JSON;
 
 /**
@@ -58,7 +59,7 @@ public class MenuScreen extends ScreenAdapter {
         Table table = new Table();
         table.setFillParent(true);
 
-        Label nameLabel = new Label("SLEEPER JEEPER", skin, "default");
+        Label nameLabel = new Label(GAME_NAME, skin, "default");
         nameLabel.setEllipsis("...");
         table.add(nameLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
