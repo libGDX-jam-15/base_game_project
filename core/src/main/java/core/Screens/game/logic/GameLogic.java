@@ -7,6 +7,7 @@ import core.Screens.game.stuff.GameStuff;
 public class GameLogic {
 
     private final DragAndDropHandler dragAndDropHandler;
+    private final GridColorLogic gridColorLogic;
     private final InputHandler inputHandler;
     private final MessageHandler messageHandler;
     private final MovementLogic movementLogic;
@@ -15,6 +16,7 @@ public class GameLogic {
 
     public GameLogic() {
         dragAndDropHandler = new DragAndDropHandler();
+        gridColorLogic = new GridColorLogic();
         inputHandler = new InputHandler();
         messageHandler = new MessageHandler();
         movementLogic = new MovementLogic();
@@ -26,13 +28,15 @@ public class GameLogic {
 
     public void initialLogic() {
         blinkLogic.setCountdowns();
+        gridColorLogic.setup();
     }
 
     public void update(float delta) {
+        blinkLogic.update(delta);
+        gridColorLogic.update(delta);
         messageHandler.update(delta);
         movementLogic.update(delta);
         powerSpawner.update(delta);
-        blinkLogic.update(delta);
     }
 
     public void setGame(GameMain game) {
@@ -45,6 +49,7 @@ public class GameLogic {
 
     public void setStuff(GameStuff stuff) {
         dragAndDropHandler.setStuff(stuff);
+        gridColorLogic.setStuff(stuff);
         inputHandler.setStuff(stuff);
         messageHandler.setStuff(stuff);
         movementLogic.setStuff(stuff);
