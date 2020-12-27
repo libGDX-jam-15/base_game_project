@@ -59,8 +59,10 @@ public class MovementLogic {
         switch (column){
             case -1:{
                 column = Constants.GRID_COLUMNS - 1;
+                break;
             } case Constants.GRID_COLUMNS:{
                 column = 0;
+                break;
             }
         }
 
