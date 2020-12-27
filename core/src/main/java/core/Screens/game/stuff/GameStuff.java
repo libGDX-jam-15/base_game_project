@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -37,13 +36,10 @@ public class GameStuff {
 
     private LevelConfig levelConfig;
 
-
     private Sprite keyFrameBB;
     private Sprite keyFrameBT;
 
-    private TextureAtlas blinkingAtlas;
     private Animation<Sprite> blinkingTop, blinkingBottom;
-
 
     public void initializeStuff(LevelConfig levelConfig) {
 
@@ -60,7 +56,8 @@ public class GameStuff {
         hover.setSize(CELL_SIZE, CELL_SIZE);
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getPlayerSpaceship());
-        player.setCell(grid.getCells()[(int) levelConfig.getPlayerInitialPosition().x][(int) levelConfig.getPlayerInitialPosition().y]); // player start position
+        Vector2 startingCellPosition = levelConfig.getPlayerInitialPosition();
+        player.setCell(grid.getCells()[(int) startingCellPosition.x][(int) startingCellPosition.y]); // player start position
         player.getSprite().setOrigin(player.getSprite().getWidth() / 2, player.getSprite().getOriginY() / 2);
 
         addGameGoal(levelConfig);
@@ -72,11 +69,8 @@ public class GameStuff {
         frontBar = new Sprite(assets.getFrontBar());
         frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
 
-        blinkingAtlas = assets.getBlinkingAtlas();
-        Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
         blinkingBottom = assets.getBlinkingBottom();
         blinkingTop = assets.getBlinkingTop();
-
 
         keyFrameBB = new Sprite(assets.getKeyFrameBB());
         keyFrameBT = new Sprite(assets.getKeyFrameBT());
@@ -146,10 +140,6 @@ public class GameStuff {
         return frontBar;
     }
 
-    public TextureAtlas getBlinkingAtlas() {
-        return blinkingAtlas;
-    }
-
     public Animation<Sprite> getBlinkingTop() {
         return blinkingTop;
     }
@@ -157,7 +147,6 @@ public class GameStuff {
     public Animation<Sprite> getBlinkingBottom() {
         return blinkingBottom;
     }
-
 
     public Sprite getKeyFrameBB() {
         return keyFrameBB;
@@ -188,6 +177,4 @@ public class GameStuff {
     public String getLvlString() {
         return lvlString;
     }
-
-
 }
