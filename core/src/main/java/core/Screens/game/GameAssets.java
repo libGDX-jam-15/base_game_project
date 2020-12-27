@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
 
 import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
+import core.loading.SoundPaths;
 
 public class GameAssets {
 
@@ -75,6 +76,18 @@ public class GameAssets {
 
         backBar = new Sprite(assetManager.get(ImagesPaths.BACK_BAR, Texture.class));
         frontBar = new Sprite(assetManager.get(ImagesPaths.FRONT_BAR, Texture.class));
+
+        message1 = assetManager.get(SoundPaths.ROBOT_MESSAGE_1);
+        message2 = assetManager.get(SoundPaths.ROBOT_MESSAGE_2);
+        message3 = assetManager.get(SoundPaths.ROBOT_MESSAGE_3);
+        message4 = assetManager.get(SoundPaths.ROBOT_MESSAGE_4);
+        message5 = assetManager.get(SoundPaths.ROBOT_MESSAGE_5);
+
+        soundsArray.add(message1);
+        soundsArray.add(message2);
+        soundsArray.add(message3);
+        soundsArray.add(message4);
+        soundsArray.add(message5);
 
         blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
@@ -145,6 +158,8 @@ public class GameAssets {
     public Sprite getFrontBar() {
         return frontBar;
     }
+
+    public Array<Sound> getSoundsArray() { return soundsArray; }
 
     public TextureAtlas getBlinkingAtlas() {
         return blinkingAtlas;

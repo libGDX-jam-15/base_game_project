@@ -51,6 +51,7 @@ public class GameScreen extends ScreenAdapter {
         camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
         stuff.initializeStuff(levelConfig);
         logic.initialLogic();
+        audioHandler.playMusic();
     }
 
     @Override
