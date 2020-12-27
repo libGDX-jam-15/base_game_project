@@ -2,6 +2,7 @@ package core.Screens.game.stuff;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
@@ -31,6 +32,8 @@ public class GameStuff {
     private GameGoal gameGoal;
     private Sprite backBar;
     private Sprite frontBar;
+    private BitmapFont lvlText;
+    private String lvlString;
 
     private LevelConfig levelConfig;
 
@@ -83,6 +86,11 @@ public class GameStuff {
 
         keyFrameBT.setPosition(0, - keyFrameBT.getHeight());
         keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
+
+
+        lvlText = assets.getPixelFont();
+        lvlString = "LEVEL: \n" + levelConfig.getLevelId();
+
     }
 
     private void addGameGoal(LevelConfig levelConfig){
@@ -168,4 +176,15 @@ public class GameStuff {
     public LevelConfig getLevelConfig() {
         return levelConfig;
     }
+
+
+    public BitmapFont getLvlText() {
+        return lvlText;
+    }
+
+    public String getLvlString() {
+        return lvlString;
+    }
+
+
 }

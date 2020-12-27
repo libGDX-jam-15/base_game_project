@@ -3,6 +3,7 @@ package core.Screens.game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import core.Screens.game.stuff.GameStuff;
+import core.config.GameConfig;
 
 public class GameRenderer {
 
@@ -28,6 +29,7 @@ public class GameRenderer {
         stuff.getFrontBar().draw(spriteBatch);
         stuff.getKeyFrameBB().draw(spriteBatch);
         stuff.getKeyFrameBT().draw(spriteBatch);
+        stuff.getLvlText().draw(spriteBatch, stuff.getLvlString(), 0, GameConfig.SCREEN_HEIGHT - 10);
         spriteBatch.end();
     }
 
