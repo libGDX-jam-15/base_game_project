@@ -32,6 +32,8 @@ public class GameStuff {
     private Sprite backBar;
     private Sprite frontBar;
 
+    private LevelConfig levelConfig;
+
 
     private Sprite keyFrameBB;
     private Sprite keyFrameBT;
@@ -41,6 +43,8 @@ public class GameStuff {
 
 
     public void initializeStuff(LevelConfig levelConfig) {
+
+        this.levelConfig = levelConfig;
 
         background = new Sprite(assets.getStarfield());
         background.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -159,5 +163,9 @@ public class GameStuff {
 
     public GameGoal getGameGoal() {
         return gameGoal;
+    }
+
+    public LevelConfig getLevelConfig() {
+        return levelConfig;
     }
 }

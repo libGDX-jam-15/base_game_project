@@ -5,17 +5,19 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import core.Screens.game.stuff.GameStuff;
 
+import static core.config.Constants.GRID_HEIGHT;
+import static core.config.Constants.GRID_WIDTH;
 import static core.config.GameConfig.SCREEN_HEIGHT;
 import static core.config.GameConfig.SCREEN_WIDTH;
 
 public class BlinkLogic {
     private GameStuff stuff;
-    private float width;
+    private float barWidth;
     private float stateTime;
     private float waitTime;
     private boolean flag;
-    private final float countDown = 3;
-    private final float countUp = 1.5f;
+    private float countDown = 3;
+    private float countUp = 1.5f;
     private Sprite keyFrameBB;
     private Sprite keyFrameBT;
     private float height;
@@ -24,7 +26,7 @@ public class BlinkLogic {
     private Animation<Sprite> blinkingBottom;
 
     public BlinkLogic() {
-        width = SCREEN_WIDTH - 400;
+        barWidth = SCREEN_WIDTH - 400;
         stateTime = 0.0f;
         waitTime = 0.0f;
         flag = true;
@@ -36,25 +38,25 @@ public class BlinkLogic {
 
         if(flag == true) {
             if (stateTime <= countDown && stateTime >= 0) {
-                stuff.getFrontBar().setSize((countDown - stateTime)*(width/countDown), stuff.getFrontBar().getHeight() );
+                stuff.getFrontBar().setSize((countDown - stateTime)*(barWidth /countDown), stuff.getFrontBar().getHeight() );
                 stateTime += delta;
 
             } else {flag = false;
             waitTime = 1.5f;}
         }else if (flag == false){
-            stuff.getFrontBar().setSize((countUp - waitTime)*(width/countUp), stuff.getFrontBar().getHeight());
+            stuff.getFrontBar().setSize((countUp - waitTime)*(barWidth /countUp), stuff.getFrontBar().getHeight());
             waitTime -= delta;
-            height = (countUp - waitTime)*SCREEN_HEIGHT/2;
+            height = (countUp - waitTime)*GRID_HEIGHT/2;
             animationStateTime += delta;
 
             keyFrameBB.setPosition(0, 0);
             keyFrameBB.set(this.blinkingBottom.getKeyFrame(animationStateTime, false));
-            keyFrameBB.setSize(SCREEN_WIDTH, height);
+            keyFrameBB.setSize(GRID_WIDTH, height);
 
 
             keyFrameBT.set(this.blinkingTop.getKeyFrame(animationStateTime, false));
-            keyFrameBT.setPosition(0, SCREEN_HEIGHT);
-            keyFrameBT.setSize(SCREEN_WIDTH, -height);
+            keyFrameBT.setPosition(0, GRID_HEIGHT);
+            keyFrameBT.setSize(GRID_WIDTH, -height);
 
             if (keyFrameBT.isFlipX() == false){
             keyFrameBT.flip(true, false);}
@@ -79,6 +81,9 @@ public class BlinkLogic {
 
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
+
+        countDown = stuff.getLevelConfig().getBlackoutIntervalTime();
+        countUp = stuff.getLevelConfig().getBlackoutPeriod();
 
         keyFrameBB = ( this.stuff.getKeyFrameBB());
         keyFrameBT = (this.stuff.getKeyFrameBT());

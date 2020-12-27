@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class LevelConfig {
     private int levelId;
     private String[][] levelMap;
-    private int blackoutStartTime;
-    private int blackoutIntervals;
+    private float blackoutIntervalTime;
+    private float blackoutPeriod;
     private ArrayList<String> texts;
     private ArrayList<Integer> listOfPowerUps;
 
@@ -59,20 +59,20 @@ public class LevelConfig {
         this.levelMap = levelMap;
     }
 
-    public int getBlackoutStartTime() {
-        return blackoutStartTime;
+    public float getBlackoutIntervalTime() {
+        return blackoutIntervalTime;
     }
 
-    public void setBlackoutStartTime(int blackoutStartTime) {
-        this.blackoutStartTime = blackoutStartTime;
+    public void setBlackoutIntervalTime(float blackoutIntervalTime) {
+        this.blackoutIntervalTime = blackoutIntervalTime;
     }
 
-    public int getBlackoutIntervals() {
-        return blackoutIntervals;
+    public float getBlackoutPeriod() {
+        return blackoutPeriod;
     }
 
-    public void setBlackoutIntervals(int blackoutIntervals) {
-        this.blackoutIntervals = blackoutIntervals;
+    public void setBlackoutPeriod(float blackoutPeriod) {
+        this.blackoutPeriod = blackoutPeriod;
     }
 
     public ArrayList<String> getTexts() {
