@@ -1,4 +1,4 @@
-package core.Screens.game.stuff.powers;
+package core.Screens.game.stuff.cellcontents.powers;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 

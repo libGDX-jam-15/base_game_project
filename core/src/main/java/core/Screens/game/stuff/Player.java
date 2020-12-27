@@ -34,7 +34,7 @@ public class Player {
         return sprite.getY();
     }
 
-    public void setPosition(Cell cell) {
+    public void setCell(Cell cell) {
         sprite.setPosition(cell.getX(), cell.getY());
         this.cell = cell;
     }

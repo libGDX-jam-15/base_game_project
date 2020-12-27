@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 
-import core.Screens.game.stuff.powers.Power;
+import core.Screens.game.stuff.cellcontents.powers.Power;
 
 import static core.config.Constants.POWERS_PANEL_HEIGHT;
 import static core.config.Constants.POWERS_PANEL_WIDTH;
