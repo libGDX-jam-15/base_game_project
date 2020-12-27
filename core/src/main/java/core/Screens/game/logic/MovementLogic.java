@@ -1,5 +1,6 @@
 package core.Screens.game.logic;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import core.Screens.game.stuff.Cell;
 import core.Screens.game.stuff.CellContent;
@@ -14,6 +15,8 @@ public class MovementLogic {
     private int column, row;
     private float stateTime;
     private MoveStates moveState;
+    private Sprite player;
+
 
     public MovementLogic() {
         this.moveState = MoveStates.Right;
@@ -39,8 +42,29 @@ public class MovementLogic {
                 stateTime = 0;
             }
         }
-        this.row = MathUtils.clamp(row, 0, Constants.GRID_ROWS - 1);
-        this.column = MathUtils.clamp(column, 0, Constants.GRID_COLUMNS - 1);
+        this.row = MathUtils.clamp(row, -1, Constants.GRID_ROWS );
+        this.column = MathUtils.clamp(column, -1, Constants.GRID_COLUMNS);
+
+        switch(row){
+            case -1:{
+                row = Constants.GRID_ROWS - 1;
+                break;
+            }
+            case Constants.GRID_ROWS:{
+                row = 0;
+                break;
+            }
+        }
+
+        switch (column){
+            case -1:{
+                column = Constants.GRID_COLUMNS - 1;
+                break;
+            } case Constants.GRID_COLUMNS:{
+                column = 0;
+                break;
+            }
+        }
 
         Cell newPlayerCell = stuff.getGrid().getCells()[column][row];
         stuff.getPlayer().setPosition(newPlayerCell);
@@ -49,22 +73,50 @@ public class MovementLogic {
             switch (((Arrow) cellContent).getDirection()) {
                 case UP: {
                     moveState = MoveStates.Up;
+
+                    player.rotate(25);
                     break;
                 }
                 case DOWN: {
                     moveState = MoveStates.Down;
+
+                   player.rotate(-25);
                     break;
                 }
                 case RIGHT: {
                     moveState = MoveStates.Right;
+
+                    player.rotate(-25);
                     break;
                 }
                 case LEFT: {
                     moveState = MoveStates.Left;
+
+                   player.rotate(25);
                     break;
                 }
             }
+        } else
+            switch (moveState){
+            case Up:{
+                stuff.getPlayer().getSprite().setRotation(90f);
+                stuff.getPlayer().setPosition(newPlayerCell);
+                break;}
+            case Down:{
+                stuff.getPlayer().getSprite().setRotation(-90f);
+                stuff.getPlayer().setPosition(newPlayerCell);
+                break;}
+            case Right:{
+                stuff.getPlayer().getSprite().setRotation(0f);
+                stuff.getPlayer().setPosition(newPlayerCell);
+                break;}
+            case Left:{
+                stuff.getPlayer().getSprite().setRotation(180);
+                stuff.getPlayer().setPosition(newPlayerCell);
+                break;}
         }
+
+
     }
 
     public MoveStates getMoveState() {
@@ -73,5 +125,7 @@ public class MovementLogic {
 
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
+        player = stuff.getPlayer().getSprite();
+        player.setOrigin(player.getWidth()/2, player.getOriginY()/2);
     }
 }
