@@ -9,12 +9,11 @@ import core.Screens.game.stuff.cellcontents.Asteroid;
 import core.Screens.game.stuff.cellcontents.CellContent;
 import core.Screens.game.stuff.cellcontents.GameGoal;
 import core.Screens.game.stuff.cellcontents.powers.Arrow;
+import core.save.LevelSave;
 import core.screenManager.ScreenEnum;
 import core.screenManager.ScreenManager;
 
-import static core.config.Constants.GRID_COLUMNS;
-import static core.config.Constants.GRID_ROWS;
-import static core.config.Constants.MAX_LEVEL;
+import static core.config.Constants.*;
 
 public class MovementLogic {
 
@@ -73,6 +72,7 @@ public class MovementLogic {
     }
 
     private void checkCell() {
+        int level = stuff.getLevelConfig().getLevelId();
         Player player = stuff.getPlayer();
         Cell playerCell = player.getCell();
         CellContent cellContent = playerCell.getContent();
@@ -97,11 +97,11 @@ public class MovementLogic {
                     break;
             }
         } else if (cellContent instanceof GameGoal) {
-            int level = Math.min(stuff.getLevelConfig().getLevelId() + 1, MAX_LEVEL);
-            ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, level);
+            boolean isGameWon =  (level + 1) >=  MAX_LEVEL;
+            game.getGameSaveHandler().saveLevelData(new LevelSave(1, level, 0, isGameWon));
+            ScreenManager.getInstance().showScreen(ScreenEnum.LEVEL_CLEARED_SCREEN, game, level);
         } else if (cellContent instanceof Asteroid) {
-            int level = stuff.getLevelConfig().getLevelId();
-            ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, level);
+            ScreenManager.getInstance().showScreen(ScreenEnum.GAME_OVER_SCREEN, game, level);
         }
     }
 

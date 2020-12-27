@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import core.GameMain;
 import core.audio.AudioHandler;
@@ -18,13 +19,10 @@ import core.screenManager.ScreenEnum;
 import core.screenManager.ScreenManager;
 import core.util.GdxUtils;
 
-import static core.config.Constants.GAME_NAME;
+import static core.config.Constants.MAX_LEVEL;
 import static core.loading.ImagesPaths.UI_SKIN_JSON;
 
-/**
- * First screen of the application. Displayed after the application is created.
- */
-public class MenuScreen extends ScreenAdapter {
+public class LevelCompletedScreen extends ScreenAdapter {
     private final GameMain game;
     private OrthographicCamera cam;
     private FitViewport viewport;
@@ -32,17 +30,21 @@ public class MenuScreen extends ScreenAdapter {
     private Skin skin;
     private AudioHandler audioHandler;
 
-    private int topLevel;
+    private int currentLevel;
+    private boolean gameFinished;
 
-    public MenuScreen(GameMain game) {
+    private TextButton retryButton;
+
+
+    public LevelCompletedScreen(GameMain game, int currentLevel) {
         this.game = game;
         this.audioHandler = game.getAudioHandler();
-        topLevel = game.getGameSaveHandler().getSavedData().getTopLevelNumber();
+        this.currentLevel = currentLevel;
     }
+
 
     @Override
     public void show() {
-
         cam = new OrthographicCamera();
         viewport = new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT, cam);
         cam.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
@@ -59,60 +61,52 @@ public class MenuScreen extends ScreenAdapter {
         Table table = new Table();
         table.setFillParent(true);
 
-        Label nameLabel = new Label(GAME_NAME, skin, "default");
-        nameLabel.setEllipsis("...");
-        table.add(nameLabel).spaceTop(5.0f).spaceBottom(10.0f);
+        String exitText = "Level Completed ";
+        if (currentLevel >= MAX_LEVEL) {
+            exitText = "Game Completed Congratulations";
+            gameFinished = true;
+        }
+
+        Label label = new Label(exitText, skin);
+        label.setEllipsis("...");
+        table.add(label).align(Align.left);
 
         table.row();
-        TextButton playButton = new TextButton("PLAY!", skin, "default");
-        table.add(playButton).spaceBottom(10.0f).fillX();
+
+        retryButton = new TextButton("Go to next level", skin, "default");
+        if (!gameFinished) {
+            table.add(retryButton).spaceBottom(10.0f).fillX();
+        }
+
 
         table.row();
-        TextButton continueButton = new TextButton("Continue to " + topLevel, skin, "default");
-        table.add(continueButton).spaceBottom(10.0f).fillX();
-
-        table.row();
-        TextButton achievements = new TextButton("Achievements", skin, "default");
-        table.add(achievements).spaceBottom(10.0f).fillX();
-
-        table.row();
-        Label versionLabel = new Label(GameConfig.GAME_VERSION, skin);
-        table.add(versionLabel).spaceTop(2.0f).spaceBottom(10.0f);
-
-        table.row();
-        Label numberOfTimesPlayed = new Label("Number of times played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
-        table.add(numberOfTimesPlayed).spaceTop(2.0f).spaceBottom(10.0f);
+        TextButton menuButton = new TextButton("Back to Menu!", skin, "default");
+        table.add(menuButton).spaceBottom(10.0f).fillX();
+        stage.addActor(table);
 
         // Add listeners to buttons
-        playButton.addListener(new ClickListener() {
+        retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 1 );
+                ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, currentLevel + 1);
             }
         });
 
-        continueButton.addListener(new ClickListener() {
+        menuButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, topLevel );
+                ScreenManager.getInstance().showScreen(ScreenEnum.MENU_SCREEN, game);
             }
         });
 
-        achievements.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.ACHIEVEMENTS_SCREEN, game);
-            }
-        });
-
-        stage.addActor(table);
     }
+
 
     @Override
     public void render(float delta) {
+
         GdxUtils.clearScreen();
         viewport.apply();
         game.batch.setProjectionMatrix(cam.combined);
@@ -124,23 +118,24 @@ public class MenuScreen extends ScreenAdapter {
         viewport.update(width, height);
     }
 
+
+    @Override
+    public void hide() {
+        super.hide();
+    }
+
     @Override
     public void pause() {
-
+        super.pause();
     }
 
     @Override
     public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
+        super.resume();
     }
 
     @Override
     public void dispose() {
-        stage.dispose();
+        super.dispose();
     }
 }
