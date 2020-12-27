@@ -18,9 +18,9 @@ public class Lwjgl3Launcher {
 
 	private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
-		configuration.setTitle("base_game_project");
+		configuration.setTitle("Astro Sleeper");
 		configuration.setWindowedMode(GameConfig.SCREEN_DESKTOP_DISPLAY_WIDTH, GameConfig.SCREEN_DESKTOP_DISPLAY_HEIGHT);
-		configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
+		configuration.setWindowIcon("spaceship_64x64.png", "spaceship_64x64.png", "spaceship_32x32.png", "spaceship_32x32.png");
 		return configuration;
 	}
 }

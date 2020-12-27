@@ -55,7 +55,7 @@ public class GaMeOvErScreen extends ScreenAdapter {
         Table table = new Table();
         table.setFillParent(true);
 
-        Label label = new Label("GaMe OvEr AsTrOnAuT!", skin, "pixelFont");
+        Label label = new Label("GaMe OvEr!!! HA-HA-HAHA-HA", skin, "pixelFont");
         label.setEllipsis("...");
         table.add(label).align(Align.left);
 
