@@ -3,20 +3,20 @@ package core.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-
 import core.GameMain;
 import core.audio.AudioHandler;
 import core.config.GameConfig;
+import core.screenManager.ScreenEnum;
+import core.screenManager.ScreenManager;
 import core.util.GdxUtils;
 
-import static com.badlogic.gdx.utils.compression.CRC.Table;
+import static core.loading.ImagesPaths.UI_SKIN_JSON;
 
 public class AchievementsScreen extends ScreenAdapter {
     private final GameMain game;
@@ -30,6 +30,7 @@ public class AchievementsScreen extends ScreenAdapter {
 
     public AchievementsScreen(GameMain game) {
         this.game = game;
+        this.audioHandler = game.getAudioHandler();
     }
 
 
@@ -41,31 +42,39 @@ public class AchievementsScreen extends ScreenAdapter {
 
         stage = new Stage(viewport, game.batch);
 
-        game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
+        game.getAssetManager().load(UI_SKIN_JSON, Skin.class);
         game.getAssetManager().finishLoading();
 
 
-        skin = game.getAssetManager().get("Skins/freezing-ui.json");
-        Gdx.input.setInputProcessor(stage);
-
+        skin = game.getAssetManager().get(UI_SKIN_JSON);
         Gdx.input.setInputProcessor(stage);
 
         com.badlogic.gdx.scenes.scene2d.ui.Table table = new Table();
         table.setFillParent(true);
 
-        Label label = new Label("Times Played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin, "pixelFont");
+        Label label = new Label("Times Played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
         label.setEllipsis("...");
         table.add(label).align(Align.left);
 
-        label = new Label("Top Level Cleared: " + game.getGameSaveHandler().getSavedData().getTopLevelNumber(), skin, "pixelFont");
+        table.row();
+        label = new Label("Top Level Cleared: " + game.getGameSaveHandler().getSavedData().getTopLevelNumber(), skin);
         label.setAlignment(Align.center);
         label.setEllipsis("...");
         table.add(label);
 
         table.row();
-        ImageTextButton imageTextButton = new ImageTextButton("Back to Menu?", skin);
-        table.add(imageTextButton).padTop(10.0f).padBottom(5.0f).spaceTop(20.0f).spaceBottom(10.0f).growY().colspan(2);
+        TextButton menuButton = new TextButton("Back to Menu!", skin, "default");
+        table.add(menuButton).spaceBottom(10.0f).fillX();
         stage.addActor(table);
+
+        // Add listeners to buttons
+        menuButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
+                ScreenManager.getInstance().showScreen( ScreenEnum.MENU_SCREEN, game );
+            }
+        });
 
     }
 
