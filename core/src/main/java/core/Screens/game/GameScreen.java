@@ -1,6 +1,7 @@
 package core.Screens.game;
 
 import com.badlogic.gdx.ScreenAdapter;
+
 import core.GameMain;
 import core.Screens.game.logic.GameLogic;
 import core.Screens.game.stuff.GameStuff;
@@ -22,7 +23,7 @@ public class GameScreen extends ScreenAdapter {
         this.game = game;
         this.audioHandler = new AudioHandler(game);
         LevelConfig levelConfig = parser.getLevelConfig(levelNumber);
-        game.getGameSaveHandler().saveLevelData(new LevelSave(1, levelNumber, 0, false ));
+        game.getGameSaveHandler().saveLevelData(new LevelSave(1, levelNumber, 0, false));
 
 
         // Create components
@@ -34,8 +35,9 @@ public class GameScreen extends ScreenAdapter {
         // Connect the components (not everything to everything, just as needed)
         logic = new GameLogic();
         input.setLogic(logic);
+        logic.setGame(game);
         logic.setAssets(assets);
-       //moved logic.setstuff from here
+        //moved logic.setstuff from here
         renderer.setStuff(stuff);
         stuff.setAssets(assets);
         // Initialize assets and stuff
@@ -43,7 +45,6 @@ public class GameScreen extends ScreenAdapter {
         stuff.initializeStuff(levelConfig);
         logic.setStuff(stuff);
     }
-
 
 
     @Override

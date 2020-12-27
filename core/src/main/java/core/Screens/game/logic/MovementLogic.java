@@ -1,5 +1,6 @@
 package core.Screens.game.logic;
 
+import core.GameMain;
 import core.Screens.game.stuff.Cell;
 import core.Screens.game.stuff.GameStuff;
 import core.Screens.game.stuff.MoveStates;
@@ -8,13 +9,19 @@ import core.Screens.game.stuff.cellcontents.Asteroid;
 import core.Screens.game.stuff.cellcontents.CellContent;
 import core.Screens.game.stuff.cellcontents.GameGoal;
 import core.Screens.game.stuff.cellcontents.powers.Arrow;
+import core.screenManager.ScreenEnum;
+import core.screenManager.ScreenManager;
 
 import static core.config.Constants.GRID_COLUMNS;
 import static core.config.Constants.GRID_ROWS;
+import static core.config.Constants.MAX_LEVEL;
 
 public class MovementLogic {
 
+    // Structure
+    private GameMain game;
     private GameStuff stuff;
+    // Logic
     private float stateTime;
     private MoveStates moveState;
 
@@ -90,11 +97,16 @@ public class MovementLogic {
                     break;
             }
         } else if (cellContent instanceof GameGoal) {
-            GameGoal gameGoal = (GameGoal) cellContent;
-
+            int level = Math.min(stuff.getLevelConfig().getLevelId() + 1, MAX_LEVEL);
+            ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, level);
         } else if (cellContent instanceof Asteroid) {
-            Asteroid asteroid = (Asteroid) cellContent;
+            int level = stuff.getLevelConfig().getLevelId();
+            ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, level);
         }
+    }
+
+    public void setGame(GameMain game) {
+        this.game = game;
     }
 
     public void setStuff(GameStuff stuff) {

@@ -1,5 +1,6 @@
 package core.Screens.game.logic;
 
+import core.GameMain;
 import core.Screens.game.GameAssets;
 import core.Screens.game.stuff.GameStuff;
 import core.level.LevelConfig;
@@ -30,6 +31,10 @@ public class GameLogic {
         movementLogic.update(delta);
         powerSpawner.update(delta);
         blinkLogic.update(delta);
+    }
+
+    public void setGame(GameMain game) {
+        movementLogic.setGame(game);
     }
 
     public void setAssets(GameAssets assets) {
