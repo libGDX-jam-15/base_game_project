@@ -52,15 +52,23 @@ public class AchievementsScreen extends ScreenAdapter {
         com.badlogic.gdx.scenes.scene2d.ui.Table table = new Table();
         table.setFillParent(true);
 
-        Label label = new Label("Times Played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
-        label.setEllipsis("...");
-        table.add(label).align(Align.left);
+        Label timesPlayedLabel = new Label("Times Played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
+        table.add(timesPlayedLabel).align(Align.center);
 
         table.row();
-        label = new Label("Top Level Cleared: " + game.getGameSaveHandler().getSavedData().getTopLevelNumber(), skin);
-        label.setAlignment(Align.center);
-        label.setEllipsis("...");
-        table.add(label);
+        Label topLevelLabel = new Label("Top Level Cleared: " + game.getGameSaveHandler().getSavedData().getTopLevelNumber(), skin);
+        topLevelLabel.setAlignment(Align.center);
+        table.add(topLevelLabel);
+
+        table.row();
+        String gameCompleted = "no";
+        if(game.getGameSaveHandler().getSavedData().isGameWon()){
+            gameCompleted = "YES - Congratulations";
+//            TODO add Dragon Lantern image
+        }
+        Label gameCompleteLabel = new Label("Game completed: " + gameCompleted, skin);
+        gameCompleteLabel.setAlignment(Align.center);
+        table.add(gameCompleteLabel);
 
         table.row();
         TextButton menuButton = new TextButton("Back to Menu!", skin, "default");

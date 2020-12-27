@@ -3,20 +3,25 @@ package core.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-
 import core.GameMain;
 import core.audio.AudioHandler;
 import core.config.GameConfig;
+import core.screenManager.ScreenEnum;
+import core.screenManager.ScreenManager;
+import core.util.GdxUtils;
 
-public class GaMeOvErScreen extends ScreenAdapter {
+import static core.loading.ImagesPaths.UI_SKIN_JSON;
+
+public class GameOverScreen extends ScreenAdapter {
     private final GameMain game;
     private OrthographicCamera cam;
     private FitViewport viewport;
@@ -24,13 +29,13 @@ public class GaMeOvErScreen extends ScreenAdapter {
     private Skin skin;
     private AudioHandler audioHandler;
 
-    private int topLevel;
+    private int currentLevel;
 
 
-
-
-    public GaMeOvErScreen(GameMain game) {
+    public GameOverScreen(GameMain game, int currentLevel) {
         this.game = game;
+        this.audioHandler = game.getAudioHandler();
+        this.currentLevel = currentLevel;
     }
 
 
@@ -42,44 +47,64 @@ public class GaMeOvErScreen extends ScreenAdapter {
 
         stage = new Stage(viewport, game.batch);
 
-        game.getAssetManager().load("Skins/freezing-ui.json", Skin.class);
+        game.getAssetManager().load(UI_SKIN_JSON, Skin.class);
         game.getAssetManager().finishLoading();
 
 
-        skin = game.getAssetManager().get("Skins/freezing-ui.json");
+        skin = game.getAssetManager().get(UI_SKIN_JSON);
         Gdx.input.setInputProcessor(stage);
 
-
-        Gdx.input.setInputProcessor(stage);
-
-        Table table = new Table();
+        com.badlogic.gdx.scenes.scene2d.ui.Table table = new Table();
         table.setFillParent(true);
 
-        Label label = new Label("GaMe OvEr!!! HA-HA-HAHA-HA", skin, "pixelFont");
+        Label label = new Label("GAME OVER ", skin);
         label.setEllipsis("...");
         table.add(label).align(Align.left);
 
         table.row();
-        TextButton textButton = new TextButton("Try Again?", skin);
-        table.add(textButton).padTop(10.0f).padBottom(2.0f).minSize(2.0f).maxWidth(300.0f).maxHeight(100.0f).prefWidth(200.0f).prefHeight(50.0f);
+        TextButton retryButton = new TextButton("Retry!", skin, "default");
+        table.add(retryButton).spaceBottom(10.0f).fillX();
+
 
         table.row();
-        ImageTextButton imageTextButton = new ImageTextButton("Back to Menu?", skin);
-        table.add(imageTextButton).padTop(10.0f).padBottom(5.0f).spaceTop(20.0f).spaceBottom(10.0f).colspan(2);
+        TextButton menuButton = new TextButton("Back to Menu!", skin, "default");
+        table.add(menuButton).spaceBottom(10.0f).fillX();
         stage.addActor(table);
+
+        // Add listeners to buttons
+
+        retryButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
+                ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, currentLevel);
+            }
+        });
+
+        menuButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
+                ScreenManager.getInstance().showScreen(ScreenEnum.MENU_SCREEN, game);
+            }
+        });
 
     }
 
     @Override
     public void render(float delta) {
-        super.render(delta);
+
+        GdxUtils.clearScreen();
+        viewport.apply();
+        game.batch.setProjectionMatrix(cam.combined);
+        stage.draw();
     }
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
         viewport.update(width, height);
     }
+
 
     @Override
     public void hide() {
