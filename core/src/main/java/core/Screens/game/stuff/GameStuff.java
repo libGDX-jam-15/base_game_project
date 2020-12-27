@@ -90,7 +90,7 @@ public class GameStuff {
 
 
         lvlText = assets.getPixelFont();
-        lvlString = "LEVEL: \n" + levelConfig.getLevelId();
+        lvlString = "LEVEL: " + levelConfig.getLevelId();
 
     }
 
