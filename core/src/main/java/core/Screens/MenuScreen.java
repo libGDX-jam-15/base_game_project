@@ -16,6 +16,8 @@ import core.GameMain;
 import core.Screens.game.GameScreen;
 import core.audio.AudioHandler;
 import core.config.GameConfig;
+import core.screenManager.ScreenEnum;
+import core.screenManager.ScreenManager;
 import core.util.GdxUtils;
 
 /**
@@ -85,7 +87,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                game.setScreen(new GameScreen(game, 1));
+                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 1 );
             }
         });
 
@@ -93,7 +95,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                game.setScreen(new GameScreen(game, topLevel));
+                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, topLevel );
             }
         });
 
@@ -102,7 +104,6 @@ public class MenuScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
 //                todo
-//                game.setScreen(new GameScreen(game, topLevel));
             }
         });
 
