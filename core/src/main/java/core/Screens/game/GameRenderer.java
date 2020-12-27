@@ -1,9 +1,13 @@
 package core.Screens.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
 
 import core.Screens.game.stuff.GameStuff;
 import core.config.GameConfig;
+
+import static core.config.Constants.ROBOT_FRAME_BACKGROUND_WIDTH;
+import static core.config.Constants.ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH;
 
 public class GameRenderer {
 
@@ -34,7 +38,15 @@ public class GameRenderer {
         stuff.getFrontBar().draw(spriteBatch);
         stuff.getKeyFrameBB().draw(spriteBatch);
         stuff.getKeyFrameBT().draw(spriteBatch);
-        stuff.getLvlText().draw(spriteBatch, stuff.getLvlString(), 0, GameConfig.SCREEN_HEIGHT - 10);
+        stuff.getLvlText().draw(
+                spriteBatch,
+                stuff.getLvlString(),
+                0,
+                GameConfig.SCREEN_HEIGHT - 10,
+                ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH,
+                Align.center,
+                true
+        );
         spriteBatch.end();
     }
 
