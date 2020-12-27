@@ -1,131 +1,103 @@
 package core.Screens.game.logic;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.MathUtils;
 import core.Screens.game.stuff.Cell;
-import core.Screens.game.stuff.CellContent;
 import core.Screens.game.stuff.GameStuff;
 import core.Screens.game.stuff.MoveStates;
-import core.Screens.game.stuff.powers.Arrow;
-import core.config.Constants;
+import core.Screens.game.stuff.Player;
+import core.Screens.game.stuff.cellcontents.Asteroid;
+import core.Screens.game.stuff.cellcontents.CellContent;
+import core.Screens.game.stuff.cellcontents.GameGoal;
+import core.Screens.game.stuff.cellcontents.powers.Arrow;
+
+import static core.config.Constants.GRID_COLUMNS;
+import static core.config.Constants.GRID_ROWS;
 
 public class MovementLogic {
 
     private GameStuff stuff;
-    private int column, row;
     private float stateTime;
     private MoveStates moveState;
-    private Sprite player;
-
 
     public MovementLogic() {
         this.moveState = MoveStates.Right;
     }
 
     public void update(float delta) {
-        column = stuff.getPlayer().getCell().getColumn();
-        row = stuff.getPlayer().getCell().getRow();
-
         stateTime += delta;
         if (stateTime > 2) {
-            if (moveState == MoveStates.Up) {
-                this.row++;
-                stateTime = 0;
-            } else if (moveState == MoveStates.Down) {
-                this.row--;
-                stateTime = 0;
-            } else if (moveState == MoveStates.Right) {
-                this.column++;
-                stateTime = 0;
-            } else if (moveState == MoveStates.Left) {
-                this.column--;
-                stateTime = 0;
-            }
+            stateTime = 0;
+            movePlayer();
+            checkCell();
         }
-        this.row = MathUtils.clamp(row, -1, Constants.GRID_ROWS );
-        this.column = MathUtils.clamp(column, -1, Constants.GRID_COLUMNS);
-
-        switch(row){
-            case -1:{
-                row = Constants.GRID_ROWS - 1;
-                break;
-            }
-            case Constants.GRID_ROWS:{
-                row = 0;
-                break;
-            }
-        }
-
-        switch (column){
-            case -1:{
-                column = Constants.GRID_COLUMNS - 1;
-                break;
-            } case Constants.GRID_COLUMNS:{
-                column = 0;
-                break;
-            }
-        }
-
-        Cell newPlayerCell = stuff.getGrid().getCells()[column][row];
-        stuff.getPlayer().setPosition(newPlayerCell);
-        CellContent cellContent = newPlayerCell.getContent();
-        if (cellContent instanceof Arrow) {
-            switch (((Arrow) cellContent).getDirection()) {
-                case UP: {
-                    moveState = MoveStates.Up;
-
-                    player.rotate(25);
-                    break;
-                }
-                case DOWN: {
-                    moveState = MoveStates.Down;
-
-                   player.rotate(-25);
-                    break;
-                }
-                case RIGHT: {
-                    moveState = MoveStates.Right;
-
-                    player.rotate(-25);
-                    break;
-                }
-                case LEFT: {
-                    moveState = MoveStates.Left;
-
-                   player.rotate(25);
-                    break;
-                }
-            }
-        } else
-            switch (moveState){
-            case Up:{
-                stuff.getPlayer().getSprite().setRotation(90f);
-                stuff.getPlayer().setPosition(newPlayerCell);
-                break;}
-            case Down:{
-                stuff.getPlayer().getSprite().setRotation(-90f);
-                stuff.getPlayer().setPosition(newPlayerCell);
-                break;}
-            case Right:{
-                stuff.getPlayer().getSprite().setRotation(0f);
-                stuff.getPlayer().setPosition(newPlayerCell);
-                break;}
-            case Left:{
-                stuff.getPlayer().getSprite().setRotation(180);
-                stuff.getPlayer().setPosition(newPlayerCell);
-                break;}
-        }
-
-
     }
 
-    public MoveStates getMoveState() {
-        return moveState;
+    private void movePlayer() {
+        Cell playerCell = stuff.getPlayer().getCell();
+        int column = playerCell.getColumn();
+        int row = playerCell.getRow();
+        switch (moveState) {
+            case Up:
+                row++;
+                if (row == GRID_ROWS) {
+                    row = 0;
+                }
+                break;
+            case Down:
+                row--;
+                if (row == -1) {
+                    row = GRID_ROWS - 1;
+                }
+                break;
+            case Right:
+                column++;
+                if (column == GRID_COLUMNS) {
+                    column = 0;
+                }
+                break;
+            case Left:
+                column--;
+                if (column == -1) {
+                    column = GRID_COLUMNS - 1;
+                }
+                break;
+        }
+        Player player = stuff.getPlayer();
+        player.setCell(stuff.getGrid().getCells()[column][row]);
+    }
+
+    private void checkCell() {
+        Player player = stuff.getPlayer();
+        Cell playerCell = player.getCell();
+        CellContent cellContent = playerCell.getContent();
+        if (cellContent instanceof Arrow) {
+            Arrow arrow = (Arrow) cellContent;
+            switch (arrow.getDirection()) {
+                case UP:
+                    moveState = MoveStates.Up;
+                    player.getSprite().setRotation(90f);
+                    break;
+                case DOWN:
+                    moveState = MoveStates.Down;
+                    player.getSprite().setRotation(-90f);
+                    break;
+                case RIGHT:
+                    moveState = MoveStates.Right;
+                    player.getSprite().setRotation(0f);
+                    break;
+                case LEFT:
+                    moveState = MoveStates.Left;
+                    player.getSprite().setRotation(180);
+                    break;
+            }
+        } else if (cellContent instanceof GameGoal) {
+            GameGoal gameGoal = (GameGoal) cellContent;
+
+        } else if (cellContent instanceof Asteroid) {
+            Asteroid asteroid = (Asteroid) cellContent;
+        }
     }
 
     public void setStuff(GameStuff stuff) {
         this.stuff = stuff;
-        player = stuff.getPlayer().getSprite();
-        player.setOrigin(player.getWidth()/2, player.getOriginY()/2);
     }
 }

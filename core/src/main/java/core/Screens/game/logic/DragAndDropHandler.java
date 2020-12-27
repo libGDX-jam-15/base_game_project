@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 
 import core.Screens.game.stuff.Cell;
 import core.Screens.game.stuff.GameStuff;
-import core.Screens.game.stuff.powers.Power;
+import core.Screens.game.stuff.cellcontents.powers.Power;
 
 import static core.config.Constants.CELL_SIZE;
 import static core.config.Constants.POWER_SIZE;

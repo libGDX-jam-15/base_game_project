@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import core.Screens.game.stuff.cellcontents.CellContent;
+
 import static core.config.Constants.CELL_SIZE;
 
 public class Cell {

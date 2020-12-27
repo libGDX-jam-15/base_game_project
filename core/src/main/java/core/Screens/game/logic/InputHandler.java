@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 
 import core.Screens.game.stuff.Cell;
 import core.Screens.game.stuff.GameStuff;
-import core.Screens.game.stuff.powers.Power;
+import core.Screens.game.stuff.cellcontents.powers.Power;
 
 public class InputHandler {
 

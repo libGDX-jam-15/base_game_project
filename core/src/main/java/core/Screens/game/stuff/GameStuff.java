@@ -5,14 +5,14 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
 import com.badlogic.gdx.math.Vector2;
-import core.Screens.game.GameAssets;
-import core.Screens.game.stuff.powers.Asteroid;
-import core.Screens.game.stuff.powers.GameGoal;
-import core.level.LevelConfig;
 
 import java.util.ArrayList;
+
+import core.Screens.game.GameAssets;
+import core.Screens.game.stuff.cellcontents.Asteroid;
+import core.Screens.game.stuff.cellcontents.GameGoal;
+import core.level.LevelConfig;
 
 import static core.config.Constants.CELL_SIZE;
 import static core.config.GameConfig.SCREEN_HEIGHT;
@@ -60,7 +60,8 @@ public class GameStuff {
         hover.setSize(CELL_SIZE, CELL_SIZE);
         hover.setColor(Color.CHARTREUSE.cpy().lerp(Color.CLEAR, 0.5f));
         player = new Player(assets.getPlayerSpaceship());
-        player.setPosition(grid.getCells()[(int) levelConfig.getPlayerInitialPosition().x][(int) levelConfig.getPlayerInitialPosition().y]); // player start position
+        player.setCell(grid.getCells()[(int) levelConfig.getPlayerInitialPosition().x][(int) levelConfig.getPlayerInitialPosition().y]); // player start position
+        player.getSprite().setOrigin(player.getSprite().getWidth() / 2, player.getSprite().getOriginY() / 2);
 
         addGameGoal(levelConfig);
         addAsteroids(levelConfig);
@@ -71,9 +72,9 @@ public class GameStuff {
         frontBar = new Sprite(assets.getFrontBar());
         frontBar.setPosition(100, SCREEN_HEIGHT - frontBar.getHeight() - 20);
 
-        blinkingAtlas =      assets.getBlinkingAtlas();
+        blinkingAtlas = assets.getBlinkingAtlas();
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
-        blinkingBottom =  assets.getBlinkingBottom();
+        blinkingBottom = assets.getBlinkingBottom();
         blinkingTop = assets.getBlinkingTop();
 
 
@@ -84,7 +85,7 @@ public class GameStuff {
         keyFrameBB.setPosition(0, -keyFrameBB.getHeight());
         keyFrameBB.setSize(SCREEN_WIDTH, keyFrameBB.getHeight());
 
-        keyFrameBT.setPosition(0, - keyFrameBT.getHeight());
+        keyFrameBT.setPosition(0, -keyFrameBT.getHeight());
         keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
 
 
@@ -93,19 +94,17 @@ public class GameStuff {
 
     }
 
-    private void addGameGoal(LevelConfig levelConfig){
+    private void addGameGoal(LevelConfig levelConfig) {
         Cell cell = grid.getCells()[(int) levelConfig.getExitPosition().x][(int) levelConfig.getExitPosition().y];
-        gameGoal = new GameGoal(assets.getLevelGoal());
-        gameGoal.setPosition(cell.getX(), cell.getY());
+        gameGoal = new GameGoal(cell, assets.getLevelGoal());
         cell.setContent(gameGoal);
     }
 
-    private void addAsteroids(LevelConfig levelConfig){
+    private void addAsteroids(LevelConfig levelConfig) {
         ArrayList<Vector2> asteroids = levelConfig.getAsteroids();
-        for(Vector2 asteroid: asteroids){
+        for (Vector2 asteroid : asteroids) {
             Cell cell = grid.getCells()[(int) asteroid.x][(int) asteroid.y];
-            Asteroid asteroid1 = new Asteroid(assets.getAsteroid());
-            asteroid1.setPosition(cell.getX(), cell.getY());
+            Asteroid asteroid1 = new Asteroid(cell, assets.getAsteroid());
             cell.setContent(asteroid1);
         }
     }
@@ -139,9 +138,13 @@ public class GameStuff {
         return player;
     }
 
-    public Sprite getBackBar(){ return backBar; }
+    public Sprite getBackBar() {
+        return backBar;
+    }
 
-    public Sprite getFrontBar(){return frontBar; }
+    public Sprite getFrontBar() {
+        return frontBar;
+    }
 
     public TextureAtlas getBlinkingAtlas() {
         return blinkingAtlas;

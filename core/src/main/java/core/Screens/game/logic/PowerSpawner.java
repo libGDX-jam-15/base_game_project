@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.MathUtils;
 import core.Screens.game.GameAssets;
 import core.Screens.game.stuff.GameStuff;
 import core.Screens.game.stuff.PowersPanel;
-import core.Screens.game.stuff.powers.Arrow;
-import core.Screens.game.stuff.powers.Power;
+import core.Screens.game.stuff.cellcontents.powers.Arrow;
+import core.Screens.game.stuff.cellcontents.powers.Power;
 
 import static core.config.Constants.POWER_SIZE;
 import static core.config.Constants.POWER_X_POSITION;
