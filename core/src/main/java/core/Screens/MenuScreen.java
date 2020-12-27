@@ -29,9 +29,12 @@ public class MenuScreen extends ScreenAdapter {
     private Skin skin;
     private AudioHandler audioHandler;
 
+    private int topLevel;
+
     public MenuScreen(GameMain game) {
         this.game = game;
         this.audioHandler = game.getAudioHandler();
+        topLevel = game.getGameSaveHandler().getSavedData().getTopLevelNumber();
     }
 
     @Override
@@ -62,12 +65,12 @@ public class MenuScreen extends ScreenAdapter {
         table.add(playButton).spaceBottom(10.0f).fillX();
 
         table.row();
-        TextButton levelsButton = new TextButton("LEVELS", skin, "default");
-        table.add(levelsButton).spaceBottom(10.0f).fillX();
+        TextButton continueButton = new TextButton("Continue to " + topLevel, skin, "default");
+        table.add(continueButton).spaceBottom(10.0f).fillX();
 
         table.row();
-        TextButton highScoreButton = new TextButton("HighScores", skin, "default");
-        table.add(highScoreButton).spaceBottom(10.0f).fillX();
+        TextButton achievements = new TextButton("Achievements", skin, "default");
+        table.add(achievements).spaceBottom(10.0f).fillX();
 
         table.row();
         Label versionLabel = new Label(GameConfig.GAME_VERSION, skin);
@@ -83,6 +86,23 @@ public class MenuScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
                 game.setScreen(new GameScreen(game, 1));
+            }
+        });
+
+        continueButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
+                game.setScreen(new GameScreen(game, topLevel));
+            }
+        });
+
+        achievements.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                audioHandler.playButtonSound();
+//                todo
+//                game.setScreen(new GameScreen(game, topLevel));
             }
         });
 
