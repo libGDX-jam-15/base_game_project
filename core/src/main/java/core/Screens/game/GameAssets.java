@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
@@ -19,10 +18,13 @@ public class GameAssets {
     private Sprite robotFrame;
     private Sprite robot;
     private Sprite pilotFrame;
-    private Sprite pilot;
+    private Sprite pilot_1;
+    private Sprite pilot_2;
+    private Sprite pilot_3;
     private Sprite cell;
-    private Sprite testPlayer;
-    private Sprite testExit;
+    private Sprite playerSpaceship;
+    private Sprite levelGoal;
+    private Sprite asteroid;
     private Sprite pixel;
     private Sprite arrow;
     private Sprite backBar;
@@ -50,10 +52,13 @@ public class GameAssets {
         robotFrame = new Sprite(assetManager.get(ImagesPaths.ROBOT_FRAME, Texture.class));
         robot = new Sprite(assetManager.get(ImagesPaths.ROBOT, Texture.class));
         pilotFrame = new Sprite(assetManager.get(ImagesPaths.PILOT_FRAME, Texture.class));
-        pilot = new Sprite(assetManager.get(ImagesPaths.PILOT, Texture.class));
+        pilot_1 = new Sprite(assetManager.get(ImagesPaths.PILOT_1, Texture.class));
+        pilot_2 = new Sprite(assetManager.get(ImagesPaths.PILOT_2, Texture.class));
+        pilot_3 = new Sprite(assetManager.get(ImagesPaths.PILOT_2, Texture.class));
         cell = new Sprite(assetManager.get(ImagesPaths.CELL, Texture.class));
-        testPlayer = new Sprite(assetManager.get(ImagesPaths.TEST_PLAYER, Texture.class));
-        testExit = new Sprite(assetManager.get(ImagesPaths.TEST_EXIT, Texture.class));
+        playerSpaceship = new Sprite(assetManager.get(ImagesPaths.SPACESHIP, Texture.class));
+        levelGoal = new Sprite(assetManager.get(ImagesPaths.LEVEL_GOAL, Texture.class));
+        asteroid = new Sprite(assetManager.get(ImagesPaths.ASTEROID, Texture.class));
         pixel = new Sprite(assetManager.get(ImagesPaths.PIXEL, Texture.class));
         arrow = new Sprite(assetManager.get(ImagesPaths.ARROW, Texture.class));
 
@@ -89,20 +94,28 @@ public class GameAssets {
         return pilotFrame;
     }
 
-    public Sprite getPilot() {
-        return pilot;
+    public Sprite getPilot_1() {
+        return pilot_1;
+    }
+
+    public Sprite getPilot_2() {
+        return pilot_2;
+    }
+
+    public Sprite getPilot_3() {
+        return pilot_3;
     }
 
     public Sprite getCell() {
         return cell;
     }
 
-    public Sprite getTestPlayer() {
-        return testPlayer;
+    public Sprite getPlayerSpaceship() {
+        return playerSpaceship;
     }
 
-    public Sprite getTestExit() {
-        return testExit;
+    public Sprite getLevelGoal() {
+        return levelGoal;
     }
 
     public Sprite getPixel() {
@@ -141,4 +154,7 @@ public class GameAssets {
         return keyFrameBT;
     }
 
+    public Sprite getAsteroid() {
+        return asteroid;
+    }
 }

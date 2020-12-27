@@ -12,10 +12,13 @@ public class LoadingPaths {
         list.add(ImagesPaths.ROBOT_FRAME);
         list.add(ImagesPaths.ROBOT);
         list.add(ImagesPaths.PILOT_FRAME);
-        list.add(ImagesPaths.PILOT);
+        list.add(ImagesPaths.PILOT_1);
+        list.add(ImagesPaths.PILOT_2);
+        list.add(ImagesPaths.PILOT_3);
         list.add(ImagesPaths.CELL);
-        list.add(ImagesPaths.TEST_PLAYER);
-        list.add(ImagesPaths.TEST_EXIT);
+        list.add(ImagesPaths.SPACESHIP);
+        list.add(ImagesPaths.LEVEL_GOAL);
+        list.add(ImagesPaths.ASTEROID);
         list.add(ImagesPaths.PIXEL);
         list.add(ImagesPaths.ARROW);
         list.add(ImagesPaths.DRAGON_LANTERN);
