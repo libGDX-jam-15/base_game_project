@@ -7,6 +7,8 @@ import core.config.GameConfig;
 
 public class GameRenderer {
 
+    // Structure
+    private GameScreen screen;
     private GameStuff stuff;
     // Renderers, could be SpriteBatches or ShapeRenderers as needed
     private final SpriteBatch spriteBatch;
@@ -16,6 +18,9 @@ public class GameRenderer {
     }
 
     public void render() {
+        // Use the camera
+        spriteBatch.setProjectionMatrix(screen.getCamera().combined);
+        // Render the game
         spriteBatch.begin();
         stuff.getBackground().draw(spriteBatch);
         stuff.getRobotFrame().draw(spriteBatch);
@@ -31,6 +36,11 @@ public class GameRenderer {
         stuff.getKeyFrameBT().draw(spriteBatch);
         stuff.getLvlText().draw(spriteBatch, stuff.getLvlString(), 0, GameConfig.SCREEN_HEIGHT - 10);
         spriteBatch.end();
+    }
+
+    // The SpriteBatch uses a projection matrix from a camera
+    public void setScreen(GameScreen screen) {
+        this.screen = screen;
     }
 
     // The renderer needs to know what to render
