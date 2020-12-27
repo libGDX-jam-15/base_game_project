@@ -60,7 +60,6 @@ public class MenuScreen extends ScreenAdapter {
         table.setFillParent(true);
 
         Label nameLabel = new Label(GAME_NAME, skin, "default");
-        nameLabel.setEllipsis("...");
         table.add(nameLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
         table.row();
@@ -82,6 +81,10 @@ public class MenuScreen extends ScreenAdapter {
         table.row();
         Label numberOfTimesPlayed = new Label("Number of times played: " + game.getGameSaveHandler().getSavedData().getTotalTimesPlayed(), skin);
         table.add(numberOfTimesPlayed).spaceTop(2.0f).spaceBottom(10.0f);
+
+        table.row();
+        Label madeByLabel = new Label("Made by: Groxar, maxkcy and LeloStrzal", skin, "default");
+        table.add(madeByLabel).spaceTop(5.0f).spaceBottom(10.0f);
 
         // Add listeners to buttons
         playButton.addListener(new ClickListener() {
