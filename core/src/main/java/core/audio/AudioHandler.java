@@ -24,6 +24,7 @@ public class AudioHandler {
 
     public void playMusic() {
         Music movinsynergy = assetManager.get(MusicPaths.MOVIN_SYNERGY);
+        movinsynergy.setVolume(0.3f);
         if (movinsynergy.isPlaying()) {
             return;
         }
