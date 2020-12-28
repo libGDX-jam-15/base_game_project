@@ -48,6 +48,7 @@ public class LoadingPaths {
 
         list.add(MusicPaths.MOVIN);
         list.add(MusicPaths.SYNERGY);
+        list.add(MusicPaths.MOVIN_SYNERGY);
 
         return list;
     }
