@@ -27,7 +27,7 @@ public class GameScreen extends ScreenAdapter {
 
     public GameScreen(GameMain game, int levelNumber) {
         this.game = game;
-        this.audioHandler = new AudioHandler(game);
+        this.audioHandler = game.getAudioHandler();
         LevelConfig levelConfig = parser.getLevelConfig(levelNumber);
         game.getGameSaveHandler().saveLevelData(new LevelSave(1, levelNumber, 0, false));
 
