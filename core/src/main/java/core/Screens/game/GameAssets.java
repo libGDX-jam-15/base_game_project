@@ -13,8 +13,6 @@ import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
 import core.loading.SoundPaths;
 
-import static core.config.Constants.CELL_SIZE;
-
 public class GameAssets {
 
     private final AssetManager assetManager;
