@@ -13,7 +13,7 @@
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0]
   ],
   "blackoutIntervalTime": 15,
-  "blackoutPeriod": 2.4,
+  "blackoutPeriod": 2.0,
   "texts": [
     "Wake up sir",
     "He is completely mad"
