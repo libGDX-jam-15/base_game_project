@@ -51,14 +51,14 @@ public class BlinkLogic {
         } else {
             stuff.getFrontBar().setSize((countUp - waitTime) * (barWidth / countUp), stuff.getFrontBar().getHeight());
             waitTime -= delta;
-            height = (countUp - waitTime) * GRID_HEIGHT / 2;
+            height = (countUp - waitTime) * GRID_HEIGHT / countUp;
             animationStateTime += delta;
 
             keyFrameBB.setPosition(0, 0);
-            keyFrameBB.set(blinkingBottom.getKeyFrame(animationStateTime, false));
+            keyFrameBB.set(blinkingBottom.getKeyFrame(animationStateTime, true));
             keyFrameBB.setSize(GRID_WIDTH, height);
 
-            keyFrameBT.set(blinkingTop.getKeyFrame(animationStateTime, false));
+            keyFrameBT.set(blinkingTop.getKeyFrame(animationStateTime, true));
             keyFrameBT.setPosition(0, GRID_HEIGHT);
             keyFrameBT.setSize(GRID_WIDTH, -height);
 
@@ -78,9 +78,6 @@ public class BlinkLogic {
                 flag = true;
             }
         }
-
-        //keyFrameBT.set(this.blinkingTop.getKeyFrame(stateTime, true));
-        //keyFrameBB.set(this.blinkingBottom.getKeyFrame(stateTime, true));
     }
 
     public void setStuff(GameStuff stuff) {

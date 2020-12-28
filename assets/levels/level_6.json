@@ -12,8 +12,8 @@
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0]
   ],
-  "blackoutIntervalTime": 15,
-  "blackoutPeriod": 2.0,
+  "blackoutIntervalTime": 8,
+  "blackoutPeriod": 2.4,
   "texts": [
     "Wake up sir",
     "He is completely mad"
