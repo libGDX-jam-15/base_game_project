@@ -48,5 +48,5 @@ public class Constants {
     public static final int PILOT_FRAME_PILOT_X = PILOT_FRAME_X + PILOT_FRAME_WIDTH / 2 - PILOT_FRAME_PILOT_WIDTH / 2;
     public static final int PILOT_FRAME_PILOT_Y = PILOT_FRAME_Y + PILOT_FRAME_HEIGHT / 2 - PILOT_FRAME_PILOT_HEIGHT / 2;
     // Levels
-    public static final int MAX_LEVEL = 7;
+    public static final int MAX_LEVEL = 15;
 }

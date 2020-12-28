@@ -51,7 +51,7 @@ public class BlinkLogic {
         } else {
             stuff.getFrontBar().setSize((countUp - waitTime) * (barWidth / countUp), stuff.getFrontBar().getHeight());
             waitTime -= delta;
-            height = (countUp - waitTime) * GRID_HEIGHT / countUp;
+            height = (countUp - waitTime) * (GRID_HEIGHT / countUp)/1.25f;
             animationStateTime += delta;
 
             keyFrameBB.setPosition(0, 0);
