@@ -14,9 +14,6 @@ import static core.config.Constants.ROBOT_FRAME_BACKGROUND_Y;
 import static core.config.Constants.ROBOT_FRAME_MESSAGE_WIDTH;
 import static core.config.Constants.ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT;
 import static core.config.Constants.ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH;
-import static core.config.Constants.ROBOT_FRAME_ROBOT_HEIGHT;
-import static core.config.Constants.ROBOT_FRAME_ROBOT_WIDTH;
-import static core.config.Constants.ROBOT_MESSAGES;
 
 public class RobotFrame {
 
@@ -36,7 +33,7 @@ public class RobotFrame {
         robot.setY(GRID_HEIGHT);
         robot.setSize(ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH, ROBOT_FRAME_ROBOT_BACKGROUND_HEIGHT);
         this.font = font;
-        message = ROBOT_MESSAGES[0];
+        message = "";
     }
 
     public void draw(SpriteBatch spriteBatch) {

@@ -13,6 +13,8 @@ import core.loading.FontsPaths;
 import core.loading.ImagesPaths;
 import core.loading.SoundPaths;
 
+import static core.config.Constants.CELL_SIZE;
+
 public class GameAssets {
 
     private final AssetManager assetManager;
@@ -33,19 +35,14 @@ public class GameAssets {
     private Sprite backBar;
     private Sprite frontBar;
 
+    private Sprite dragonLantern;
 
     private Sprite keyFrameBB;
     private Sprite keyFrameBT;
     // Fonts
     private BitmapFont pixelFont;
     // Audio
-    private Sound message1;
-    private Sound message2;
-    private Sound message3;
-    private Sound message4;
-    private Sound message5;
-
-    private Array<Sound> soundsArray = new Array<>();
+    private final Array<Sound> soundsArray = new Array<>();
 
     //atlas + animations
     private TextureAtlas blinkingAtlas;
@@ -77,22 +74,18 @@ public class GameAssets {
         backBar = new Sprite(assetManager.get(ImagesPaths.BACK_BAR, Texture.class));
         frontBar = new Sprite(assetManager.get(ImagesPaths.FRONT_BAR, Texture.class));
 
-        message1 = assetManager.get(SoundPaths.ROBOT_MESSAGE_1);
-        message2 = assetManager.get(SoundPaths.ROBOT_MESSAGE_2);
-        message3 = assetManager.get(SoundPaths.ROBOT_MESSAGE_3);
-        message4 = assetManager.get(SoundPaths.ROBOT_MESSAGE_4);
-        message5 = assetManager.get(SoundPaths.ROBOT_MESSAGE_5);
+        dragonLantern = new Sprite(assetManager.get(ImagesPaths.DRAGON_LANTERN, Texture.class));
 
-        soundsArray.add(message1);
-        soundsArray.add(message2);
-        soundsArray.add(message3);
-        soundsArray.add(message4);
-        soundsArray.add(message5);
+        soundsArray.add(assetManager.get(SoundPaths.ROBOT_MESSAGE_1));
+        soundsArray.add(assetManager.get(SoundPaths.ROBOT_MESSAGE_2));
+        soundsArray.add(assetManager.get(SoundPaths.ROBOT_MESSAGE_3));
+        soundsArray.add(assetManager.get(SoundPaths.ROBOT_MESSAGE_4));
+        soundsArray.add(assetManager.get(SoundPaths.ROBOT_MESSAGE_5));
 
         blinkingAtlas = assetManager.get(ImagesPaths.BLINKING_ATLAS, TextureAtlas.class);
         Animation.PlayMode playMode = Animation.PlayMode.LOOP_PINGPONG;
-        blinkingTop = new Animation<Sprite>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
-        blinkingBottom = new Animation<Sprite>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingTop = new Animation<>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
+        blinkingBottom = new Animation<>(1.5f / 10f, getBlinkingAtlas().createSprites("eyelid"), playMode);
 
         keyFrameBB = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
         keyFrameBT = new Sprite(getBlinkingAtlas().findRegion("eyelid", 1));
@@ -159,7 +152,13 @@ public class GameAssets {
         return frontBar;
     }
 
-    public Array<Sound> getSoundsArray() { return soundsArray; }
+    public Sprite getDragonLantern() {
+        return dragonLantern;
+    }
+
+    public Array<Sound> getSoundsArray() {
+        return soundsArray;
+    }
 
     public TextureAtlas getBlinkingAtlas() {
         return blinkingAtlas;
