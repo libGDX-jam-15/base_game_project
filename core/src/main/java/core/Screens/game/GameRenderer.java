@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Align;
 import core.Screens.game.stuff.GameStuff;
 import core.config.GameConfig;
 
-import static core.config.Constants.ROBOT_FRAME_BACKGROUND_WIDTH;
 import static core.config.Constants.ROBOT_FRAME_ROBOT_BACKGROUND_WIDTH;
 
 public class GameRenderer {
@@ -32,6 +31,7 @@ public class GameRenderer {
         stuff.getGrid().draw(spriteBatch);
         stuff.getHover().draw(spriteBatch);
         stuff.getPowersPanel().draw(spriteBatch);
+        //stuff.getDragonLantern().draw(spriteBatch);
         stuff.getPlayer().draw(spriteBatch);
         stuff.getGameGoal().draw(spriteBatch);
         stuff.getBackBar().draw(spriteBatch);

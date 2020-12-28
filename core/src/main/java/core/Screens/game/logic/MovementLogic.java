@@ -30,7 +30,7 @@ public class MovementLogic {
 
     public void update(float delta) {
         stateTime += delta;
-        if (stateTime > 2) {
+        if (stateTime > 1f) {
             stateTime = 0;
             movePlayer();
             checkCell();

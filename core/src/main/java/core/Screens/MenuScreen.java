@@ -3,6 +3,8 @@ package core.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
 import core.GameMain;
 import core.audio.AudioHandler;
 import core.config.GameConfig;
@@ -31,6 +34,7 @@ public class MenuScreen extends ScreenAdapter {
     private Stage stage;
     private Skin skin;
     private AudioHandler audioHandler;
+    private Sprite dragonLantern;
 
     private int topLevel;
 
@@ -38,6 +42,7 @@ public class MenuScreen extends ScreenAdapter {
         this.game = game;
         this.audioHandler = game.getAudioHandler();
         topLevel = game.getGameSaveHandler().getSavedData().getTopLevelNumber();
+        dragonLantern = new Sprite(new Texture(Gdx.files.internal("dragonLantern.jpg")));
     }
 
     @Override
@@ -91,7 +96,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 1 );
+                ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, 1);
             }
         });
 
@@ -99,7 +104,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, topLevel );
+                ScreenManager.getInstance().showScreen(ScreenEnum.GAME_SCREEN, game, topLevel);
             }
         });
 
@@ -107,7 +112,7 @@ public class MenuScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 audioHandler.playButtonSound();
-                ScreenManager.getInstance().showScreen( ScreenEnum.ACHIEVEMENTS_SCREEN, game);
+                ScreenManager.getInstance().showScreen(ScreenEnum.ACHIEVEMENTS_SCREEN, game);
             }
         });
 
@@ -119,6 +124,9 @@ public class MenuScreen extends ScreenAdapter {
         GdxUtils.clearScreen();
         viewport.apply();
         game.batch.setProjectionMatrix(cam.combined);
+        game.batch.begin();
+        dragonLantern.draw(game.batch);
+        game.batch.end();
         stage.draw();
     }
 

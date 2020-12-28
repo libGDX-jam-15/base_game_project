@@ -46,7 +46,7 @@ public class BlinkLogic {
 
             } else {
                 flag = false;
-                waitTime = 1.5f;
+                waitTime = countUp;
             }
         } else {
             stuff.getFrontBar().setSize((countUp - waitTime) * (barWidth / countUp), stuff.getFrontBar().getHeight());

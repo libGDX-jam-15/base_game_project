@@ -33,6 +33,7 @@ public class GameStuff {
     private Sprite frontBar;
     private BitmapFont lvlText;
     private String lvlString;
+    private Sprite dragonLantern;
 
     private LevelConfig levelConfig;
 
@@ -82,10 +83,11 @@ public class GameStuff {
         keyFrameBT.setPosition(0, -keyFrameBT.getHeight());
         keyFrameBT.setSize(SCREEN_WIDTH, keyFrameBT.getHeight());
 
-
         lvlText = assets.getPixelFont();
         lvlString = "LEVEL: " + levelConfig.getLevelId();
 
+        dragonLantern = new Sprite(assets.getDragonLantern());
+        dragonLantern.setSize(CELL_SIZE, CELL_SIZE);
     }
 
     private void addGameGoal(LevelConfig levelConfig) {
@@ -176,5 +178,9 @@ public class GameStuff {
 
     public String getLvlString() {
         return lvlString;
+    }
+
+    public Sprite getDragonLantern() {
+        return dragonLantern;
     }
 }
